@@ -4,59 +4,12 @@
     "items": []
   },
   {
-    "listing": "/garden/complex-systems/index.html",
-    "items": []
-  },
-  {
     "listing": "/gallery.html",
     "items": [
       "/gallery/sketchnotes/2022-09-30_how-to-pitch-worklife/index.html",
       "/gallery/sketchnotes/2022-09-16_RSE-unconf-2022/index.html",
       "/gallery/templates/cheatsheet/index.html",
       "/gallery/templates/sketchnote/index.html"
-    ]
-  },
-  {
-    "listing": "/blog.html",
-    "items": [
-      "/posts/emphasis-spans-pandoc/index.html",
-      "/posts/snowSQL-cli-csv/index.html",
-      "/posts/git-init-gitignore/index.html",
-      "/posts/masonry-gallery/index.html",
-      "/posts/reusing-images-with-git-submodules/index.html",
-      "/posts/ggplot-helper-design/index.html",
-      "/posts/documenting-gpt-generated-data/index.html",
-      "/posts/quarto-extensions-explainer/index.html",
-      "/posts/imagemagick-basic-trim/index.html",
-      "/posts/layout-folder-images/index.html",
-      "/posts/hacky-hour-reflections/index.html",
-      "/posts/remove-unused-files/index.html",
-      "/posts/slides-quarto-includes/index.html",
-      "/posts/cv-html-pdf/index.html",
-      "/posts/pander-list-tables/index.html",
-      "/posts/xmap-ggraph-bipartite/index.html",
-      "/posts/twitter-card-quarto/index.html",
-      "/posts/R-markdown-and-friends/index.html",
-      "/posts/emoji-tricks/index.html"
-    ]
-  },
-  {
-    "listing": "/garden/consciousness/index.html",
-    "items": [
-      "/garden/consciousness/predictive-processing.html"
-    ]
-  },
-  {
-    "listing": "/garden/ecology/index.html",
-    "items": [
-      "/garden/ecology/vegetation-patterns.html"
-    ]
-  },
-  {
-    "listing": "/garden/information-theory/index.html",
-    "items": [
-      "/garden/information-theory/entropy_and_information.html",
-      "/garden/information-theory/how-information-is-measured.html"
     ]
   }
 ]
