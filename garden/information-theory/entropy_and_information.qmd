@@ -1,0 +1,54 @@
+---
+title: "Entropy and Information"
+date: 2026-04-14
+description: "How 19th century thermodynamics and 20th century information theory converged on the same idea"
+categories: [entropy, shannon, thermodynamics, bits, physical-information]
+---
+
+## Information is Physical
+
+There is a famous slogan from Rolf Landauer at IBM: **"Information is physical."** Like Bateson's definition, it rewards careful unpacking.
+
+The first meaning is straightforward: every bit we know of is represented by a physical system with two distinguishable states. A transistor in a computer is a switch — open (no current flows, call it 0) or closed (current flows, call it 1). A photon entering your eye is either present (1) or absent (0). Light can even be polarized in two different orientations, giving another physical implementation of the same binary distinction. In each case, the abstraction of a bit is grounded in a concrete physical object that can be in one of two states.
+
+The second, deeper meaning is the converse: **all physical systems contain information**. Any system with $N$ distinguishable states encodes:
+
+$$\text{bits} = \log_2 N$$
+
+If $N = 8$, that's $\log_2 8 = 3$ bits — exactly the number of binary digits needed to write 8 in binary (`1000`). If $N = 3$ (say, a system that can be in states *yes*, *no*, or *maybe*), then it encodes $\log_2 3 \approx 1.58$ bits — a non-integer, sitting between 1 and 2 bits, but information nonetheless. Any physical system with distinguishable states is, in this sense, storing information.
+
+## Boltzmann's Insight: Entropy as Information
+
+This observation — that physical systems register information through their number of possible states — was not first made by information theorists. It was made by 19th century physicists trying to understand heat engines.
+
+Physicists like Maxwell, Boltzmann, and Gibbs were grappling with a puzzling constraint: when you convert heat into mechanical work (as in a steam engine), you can never extract *all* the energy. Something always gets left behind. They called this leftover quantity **entropy** — a measure of disorder or randomness in a system.
+
+The key insight came when they understood heat as the collective kinetic energy of microscopic molecules bouncing around. A gas in a cylinder has an enormous number of possible arrangements — different positions and velocities for each molecule. Boltzmann called these arrangements *complexions*. And he noticed that if you let $N$ be the number of possible complexions, then the quantity:
+
+$$S = k \log N$$
+
+— where $k$ is a constant (now called [[Boltzmann's constant]]) — behaved exactly like entropy. It never decreased. It gunged up the works of heat engines. It was the thermodynamic quantity they had been measuring all along.
+
+But look at what $\log N$ is: it is precisely the number of bits required to label each possible state of the system. **Entropy, it turns out, is just the amount of information needed to fully describe the microscopic state of a physical system.**
+
+This formula is so fundamental that it appears engraved on Boltzmann's tombstone in Vienna — a fitting monument for a man who, despite dying in 1906 before his ideas were fully accepted, had quietly unified thermodynamics and information theory decades before Shannon formalized the connection.
+
+## The Convergence: Shannon Meets Boltzmann
+
+When [[Claude Shannon]] developed his mathematical theory of communication in 1948, he needed a measure of uncertainty — a way to quantify how much information a message could contain. The formula he arrived at was:
+
+$$H = -\sum_i p_i \log_2 p_i$$
+
+His colleagues immediately noticed: this is structurally identical to Boltzmann's entropy formula. Shannon reportedly asked [[John von Neumann]] what to call his new quantity. Von Neumann's reply was characteristically wry: call it entropy, since nobody really knows what entropy is anyway, and you'll always have the advantage in any argument.
+
+The deep reason they converge is not coincidence — it is that both are measuring the same thing from different angles. Boltzmann was asking: *how many microscopic states are consistent with what I can observe?* Shannon was asking: *how uncertain am I about which message was sent?* Both questions are, at bottom, questions about the number of distinguishable possibilities — and the logarithm of that number is the answer to both.
+
+## Why This Matters
+
+The convergence of entropy and information is not just a mathematical curiosity. It means that:
+
+- **Disorder is information** — a highly disordered system is one with many possible states, and therefore one that contains (or requires) a large amount of information to fully describe.
+- **Information has physical costs** — because bits are physical, manipulating them (flipping a switch, erasing a memory) has thermodynamic consequences. Landauer's principle states that erasing one bit of information must dissipate a minimum amount of heat into the environment.
+- **The universe tends toward higher entropy** — which is the same as saying it tends toward states that require more information to describe, states where more possibilities are realized.
+
+This is the foundation on which the connection between information theory and the [[Free Energy Principle]] is built — and it is why surprise, entropy, and free energy all turn out to be different faces of the same underlying idea.

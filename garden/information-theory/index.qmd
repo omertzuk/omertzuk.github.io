@@ -18,8 +18,8 @@ Notes, explorations, and experiments related to information theory, entropy, cod
 
 ### Topics to explore:
 
-- Shannon entropy and mutual information
-- Information geometry
+- [How information is measured?](how-information-is-measured.qmd) — surprise, entropy, Shannon
+- [From surprise to entropy](entropy_and_information.qmd)
 - Predictive coding and the Free Energy Principle
 - Information flow in complex systems
 - Compression and representation learning
