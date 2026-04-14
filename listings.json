@@ -54,6 +54,9 @@
   },
   {
     "listing": "/garden/information-theory/index.html",
-    "items": []
+    "items": [
+      "/garden/information-theory/entropy_and_information.html",
+      "/garden/information-theory/how-information-is-measured.html"
+    ]
   }
 ]

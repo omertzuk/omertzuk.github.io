@@ -7,8 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Omer Tzuk">
+<meta name="dcterms.date" content="2026-04-14">
+<meta name="description" content="How 19th century thermodynamics and 20th century information theory converged on the same idea">
 
-<title>Information Theory – Omer Tzuk</title>
+<title>Entropy and Information – Omer Tzuk</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,8 +68,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-listing/list.min.js"></script>
-<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -106,35 +106,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -167,13 +138,13 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Information Theory – Omer Tzuk">
-<meta property="og:description" content="Omer Tzuk’s Website">
+<meta property="og:title" content="Entropy and Information – Omer Tzuk">
+<meta property="og:description" content="How 19th century thermodynamics and 20th century information theory converged on the same idea">
 <meta property="og:image" content="https://omertzuk.github.io/garden/information-theory/featured.png">
 <meta property="og:site_name" content="Omer Tzuk">
 </head>
 
-<body class="nav-sidebar floating nav-fixed quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -250,78 +221,43 @@ window.Quarto = {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../garden/information-theory/index.html">Information Theory</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../digital-garden.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Welcome</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../garden/information-theory/index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Information Theory</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../garden/complex-systems/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Complex Systems</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../garden/consciousness/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Consciousness</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../garden/ecology/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ecology</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#information-theory" id="toc-information-theory" class="nav-link active" data-scroll-target="#information-theory">Information Theory</a>
-  <ul class="collapse">
-  <li><a href="#topics-to-explore" id="toc-topics-to-explore" class="nav-link" data-scroll-target="#topics-to-explore">Topics to explore:</a></li>
-  </ul></li>
+  <li><a href="#information-is-physical" id="toc-information-is-physical" class="nav-link active" data-scroll-target="#information-is-physical">Information is Physical</a></li>
+  <li><a href="#boltzmanns-insight-entropy-as-information" id="toc-boltzmanns-insight-entropy-as-information" class="nav-link" data-scroll-target="#boltzmanns-insight-entropy-as-information">Boltzmann’s Insight: Entropy as Information</a></li>
+  <li><a href="#the-convergence-shannon-meets-boltzmann" id="toc-the-convergence-shannon-meets-boltzmann" class="nav-link" data-scroll-target="#the-convergence-shannon-meets-boltzmann">The Convergence: Shannon Meets Boltzmann</a></li>
+  <li><a href="#why-this-matters" id="toc-why-this-matters" class="nav-link" data-scroll-target="#why-this-matters">Why This Matters</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/omertzuk/omertzuk.github.io/edit/main/garden/information-theory/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/omertzuk/omertzuk.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Yml0cw==">bits <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZW50cm9weQ==">entropy <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Zm91bmRhdGlvbnM=">foundations <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGh5c2ljYWwtaW5mb3JtYXRpb24=">physical-information <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2hhbm5vbg==">shannon <span class="quarto-category-count">(2)</span></div><div class="category" data-category="dGhlcm1vZHluYW1pY3M=">thermodynamics <span class="quarto-category-count">(1)</span></div></div></div>
+<div class="toc-actions"><ul><li><a href="https://github.com/omertzuk/omertzuk.github.io/edit/main/garden/information-theory/entropy_and_information.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/omertzuk/omertzuk.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Information Theory</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
-</div>
+<div class="quarto-title-block"><div><h1 class="title">Entropy and Information</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+  <div class="quarto-categories">
+    <div class="quarto-category">entropy</div>
+    <div class="quarto-category">shannon</div>
+    <div class="quarto-category">thermodynamics</div>
+    <div class="quarto-category">bits</div>
+    <div class="quarto-category">physical-information</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    How 19th century thermodynamics and 20th century information theory converged on the same idea
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -333,6 +269,12 @@ window.Quarto = {
           </div>
   </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 14, 2026</p>
+    </div>
+  </div>
   
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
@@ -348,89 +290,44 @@ window.Quarto = {
 </header>
 
 
-<section id="information-theory" class="level2">
-<h2 class="anchored" data-anchor-id="information-theory">Information Theory</h2>
-<p>Notes, explorations, and experiments related to information theory, entropy, coding, and the mathematics of communication and knowledge.</p>
-<section id="topics-to-explore" class="level3">
-<h3 class="anchored" data-anchor-id="topics-to-explore">Topics to explore:</h3>
+<section id="information-is-physical" class="level2">
+<h2 class="anchored" data-anchor-id="information-is-physical">Information is Physical</h2>
+<p>There is a famous slogan from Rolf Landauer at IBM: <strong>“Information is physical.”</strong> Like Bateson’s definition, it rewards careful unpacking.</p>
+<p>The first meaning is straightforward: every bit we know of is represented by a physical system with two distinguishable states. A transistor in a computer is a switch — open (no current flows, call it 0) or closed (current flows, call it 1). A photon entering your eye is either present (1) or absent (0). Light can even be polarized in two different orientations, giving another physical implementation of the same binary distinction. In each case, the abstraction of a bit is grounded in a concrete physical object that can be in one of two states.</p>
+<p>The second, deeper meaning is the converse: <strong>all physical systems contain information</strong>. Any system with <span class="math inline">\(N\)</span> distinguishable states encodes:</p>
+<p><span class="math display">\[\text{bits} = \log_2 N\]</span></p>
+<p>If <span class="math inline">\(N = 8\)</span>, that’s <span class="math inline">\(\log_2 8 = 3\)</span> bits — exactly the number of binary digits needed to write 8 in binary (<code>1000</code>). If <span class="math inline">\(N = 3\)</span> (say, a system that can be in states <em>yes</em>, <em>no</em>, or <em>maybe</em>), then it encodes <span class="math inline">\(\log_2 3 \approx 1.58\)</span> bits — a non-integer, sitting between 1 and 2 bits, but information nonetheless. Any physical system with distinguishable states is, in this sense, storing information.</p>
+</section>
+<section id="boltzmanns-insight-entropy-as-information" class="level2">
+<h2 class="anchored" data-anchor-id="boltzmanns-insight-entropy-as-information">Boltzmann’s Insight: Entropy as Information</h2>
+<p>This observation — that physical systems register information through their number of possible states — was not first made by information theorists. It was made by 19th century physicists trying to understand heat engines.</p>
+<p>Physicists like Maxwell, Boltzmann, and Gibbs were grappling with a puzzling constraint: when you convert heat into mechanical work (as in a steam engine), you can never extract <em>all</em> the energy. Something always gets left behind. They called this leftover quantity <strong>entropy</strong> — a measure of disorder or randomness in a system.</p>
+<p>The key insight came when they understood heat as the collective kinetic energy of microscopic molecules bouncing around. A gas in a cylinder has an enormous number of possible arrangements — different positions and velocities for each molecule. Boltzmann called these arrangements <em>complexions</em>. And he noticed that if you let <span class="math inline">\(N\)</span> be the number of possible complexions, then the quantity:</p>
+<p><span class="math display">\[S = k \log N\]</span></p>
+<p>— where <span class="math inline">\(k\)</span> is a constant (now called [[Boltzmann’s constant]]) — behaved exactly like entropy. It never decreased. It gunged up the works of heat engines. It was the thermodynamic quantity they had been measuring all along.</p>
+<p>But look at what <span class="math inline">\(\log N\)</span> is: it is precisely the number of bits required to label each possible state of the system. <strong>Entropy, it turns out, is just the amount of information needed to fully describe the microscopic state of a physical system.</strong></p>
+<p>This formula is so fundamental that it appears engraved on Boltzmann’s tombstone in Vienna — a fitting monument for a man who, despite dying in 1906 before his ideas were fully accepted, had quietly unified thermodynamics and information theory decades before Shannon formalized the connection.</p>
+</section>
+<section id="the-convergence-shannon-meets-boltzmann" class="level2">
+<h2 class="anchored" data-anchor-id="the-convergence-shannon-meets-boltzmann">The Convergence: Shannon Meets Boltzmann</h2>
+<p>When [[Claude Shannon]] developed his mathematical theory of communication in 1948, he needed a measure of uncertainty — a way to quantify how much information a message could contain. The formula he arrived at was:</p>
+<p><span class="math display">\[H = -\sum_i p_i \log_2 p_i\]</span></p>
+<p>His colleagues immediately noticed: this is structurally identical to Boltzmann’s entropy formula. Shannon reportedly asked [[John von Neumann]] what to call his new quantity. Von Neumann’s reply was characteristically wry: call it entropy, since nobody really knows what entropy is anyway, and you’ll always have the advantage in any argument.</p>
+<p>The deep reason they converge is not coincidence — it is that both are measuring the same thing from different angles. Boltzmann was asking: <em>how many microscopic states are consistent with what I can observe?</em> Shannon was asking: <em>how uncertain am I about which message was sent?</em> Both questions are, at bottom, questions about the number of distinguishable possibilities — and the logarithm of that number is the answer to both.</p>
+</section>
+<section id="why-this-matters" class="level2">
+<h2 class="anchored" data-anchor-id="why-this-matters">Why This Matters</h2>
+<p>The convergence of entropy and information is not just a mathematical curiosity. It means that:</p>
 <ul>
-<li><a href="../../garden/information-theory/how-information-is-measured.html">How information is measured?</a> — surprise, entropy, Shannon</li>
-<li>Information geometry</li>
-<li>Predictive coding and the Free Energy Principle</li>
-<li>Information flow in complex systems</li>
-<li>Compression and representation learning</li>
-<li>Information-theoretic approaches to consciousness</li>
+<li><strong>Disorder is information</strong> — a highly disordered system is one with many possible states, and therefore one that contains (or requires) a large amount of information to fully describe.</li>
+<li><strong>Information has physical costs</strong> — because bits are physical, manipulating them (flipping a switch, erasing a memory) has thermodynamic consequences. Landauer’s principle states that erasing one bit of information must dissipate a minimum amount of heat into the environment.</li>
+<li><strong>The universe tends toward higher entropy</strong> — which is the same as saying it tends toward states that require more information to describe, states where more possibilities are realized.</li>
 </ul>
-<hr>
-<div id="listing-listing" class="quarto-listing quarto-listing-container-grid">
-<div class="list grid quarto-listing-cols-2">
-<div class="g-col-1" data-index="0" data-categories="ZW50cm9weSUyQ3NoYW5ub24lMkN0aGVybW9keW5hbWljcyUyQ2JpdHMlMkNwaHlzaWNhbC1pbmZvcm1hdGlvbg==" data-listing-date-sort="1776114000000" data-listing-file-modified-sort="1776170050150" data-listing-date-modified-sort="1776170050000" data-listing-reading-time-sort="4" data-listing-word-count-sort="798">
-<a href="../../garden/information-theory/entropy_and_information.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Entropy and Information
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZW50cm9weQ=='); return false;">entropy</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('c2hhbm5vbg=='); return false;">shannon</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dGhlcm1vZHluYW1pY3M='); return false;">thermodynamics</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Yml0cw=='); return false;">bits</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cGh5c2ljYWwtaW5mb3JtYXRpb24='); return false;">physical-information</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>How 19th century thermodynamics and 20th century information theory converged on the same idea</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Apr 14, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="ZW50cm9weSUyQ2ZvdW5kYXRpb25zJTJDc2hhbm5vbg==" data-listing-date-sort="1776114000000" data-listing-file-modified-sort="1776170052321" data-listing-date-modified-sort="1776170052000" data-listing-reading-time-sort="5" data-listing-word-count-sort="980">
-<a href="../../garden/information-theory/how-information-is-measured.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-How Information is Measured?
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZW50cm9weQ=='); return false;">entropy</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Zm91bmRhdGlvbnM='); return false;">foundations</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('c2hhbm5vbg=='); return false;">shannon</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>From surprise to entropy — the mathematical foundations of measuring information</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Apr 14, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
-
+<p>This is the foundation on which the connection between information theory and the [[Free Energy Principle]] is built — and it is why surprise, entropy, and free energy all turn out to be different faces of the same underlying idea.</p>
 
 
 <!-- -->
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -886,36 +783,59 @@ Apr 14, 2026
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Information Theory"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">listing:</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">  contents: </span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">    - "*.qmd"</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">    - "*.ipynb"</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">    - "!index.qmd"</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">  sort: "date desc"</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  type: grid</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">  grid-columns: 2</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">  fields: [date, title, description, categories]</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">  categories: true</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Information Theory</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>Notes, explorations, and experiments related to information theory, entropy, coding, and the mathematics of communication and knowledge.</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">### Topics to explore:</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">How information is measured?</span><span class="co">](how-information-is-measured.qmd)</span> — surprise, entropy, Shannon</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Information geometry</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Predictive coding and the Free Energy Principle</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Information flow in complex systems</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Compression and representation learning</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Information-theoretic approaches to consciousness</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Entropy and Information"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2026-04-14</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "How 19th century thermodynamics and 20th century information theory converged on the same idea"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [entropy, shannon, thermodynamics, bits, physical-information]</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## Information is Physical</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>There is a famous slogan from Rolf Landauer at IBM: **"Information is physical."** Like Bateson's definition, it rewards careful unpacking.</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>The first meaning is straightforward: every bit we know of is represented by a physical system with two distinguishable states. A transistor in a computer is a switch — open (no current flows, call it 0) or closed (current flows, call it 1). A photon entering your eye is either present (1) or absent (0). Light can even be polarized in two different orientations, giving another physical implementation of the same binary distinction. In each case, the abstraction of a bit is grounded in a concrete physical object that can be in one of two states.</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>The second, deeper meaning is the converse: **all physical systems contain information**. Any system with $N$ distinguishable states encodes:</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>$$\text{bits} = \log_2 N$$</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>If $N = 8$, that's $\log_2 8 = 3$ bits — exactly the number of binary digits needed to write 8 in binary (<span class="in">`1000`</span>). If $N = 3$ (say, a system that can be in states *yes*, *no*, or *maybe*), then it encodes $\log_2 3 \approx 1.58$ bits — a non-integer, sitting between 1 and 2 bits, but information nonetheless. Any physical system with distinguishable states is, in this sense, storing information.</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Boltzmann's Insight: Entropy as Information</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>This observation — that physical systems register information through their number of possible states — was not first made by information theorists. It was made by 19th century physicists trying to understand heat engines.</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>Physicists like Maxwell, Boltzmann, and Gibbs were grappling with a puzzling constraint: when you convert heat into mechanical work (as in a steam engine), you can never extract *all* the energy. Something always gets left behind. They called this leftover quantity **entropy** — a measure of disorder or randomness in a system.</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>The key insight came when they understood heat as the collective kinetic energy of microscopic molecules bouncing around. A gas in a cylinder has an enormous number of possible arrangements — different positions and velocities for each molecule. Boltzmann called these arrangements *complexions*. And he noticed that if you let $N$ be the number of possible complexions, then the quantity:</span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>$$S = k \log N$$</span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>::: {#listing}</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>— where $k$ is a constant (now called [<span class="co">[</span><span class="ot">Boltzmann's constant</span><span class="co">]</span>]) — behaved exactly like entropy. It never decreased. It gunged up the works of heat engines. It was the thermodynamic quantity they had been measuring all along.</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>But look at what $\log N$ is: it is precisely the number of bits required to label each possible state of the system. **Entropy, it turns out, is just the amount of information needed to fully describe the microscopic state of a physical system.**</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>This formula is so fundamental that it appears engraved on Boltzmann's tombstone in Vienna — a fitting monument for a man who, despite dying in 1906 before his ideas were fully accepted, had quietly unified thermodynamics and information theory decades before Shannon formalized the connection.</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Convergence: Shannon Meets Boltzmann</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>When [<span class="co">[</span><span class="ot">Claude Shannon</span><span class="co">]</span>] developed his mathematical theory of communication in 1948, he needed a measure of uncertainty — a way to quantify how much information a message could contain. The formula he arrived at was:</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>$$H = -\sum_i p_i \log_2 p_i$$</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>His colleagues immediately noticed: this is structurally identical to Boltzmann's entropy formula. Shannon reportedly asked [<span class="co">[</span><span class="ot">John von Neumann</span><span class="co">]</span>] what to call his new quantity. Von Neumann's reply was characteristically wry: call it entropy, since nobody really knows what entropy is anyway, and you'll always have the advantage in any argument.</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>The deep reason they converge is not coincidence — it is that both are measuring the same thing from different angles. Boltzmann was asking: *how many microscopic states are consistent with what I can observe?* Shannon was asking: *how uncertain am I about which message was sent?* Both questions are, at bottom, questions about the number of distinguishable possibilities — and the logarithm of that number is the answer to both.</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="fu">## Why This Matters</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>The convergence of entropy and information is not just a mathematical curiosity. It means that:</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Disorder is information** — a highly disordered system is one with many possible states, and therefore one that contains (or requires) a large amount of information to fully describe.</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Information has physical costs** — because bits are physical, manipulating them (flipping a switch, erasing a memory) has thermodynamic consequences. Landauer's principle states that erasing one bit of information must dissipate a minimum amount of heat into the environment.</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**The universe tends toward higher entropy** — which is the same as saying it tends toward states that require more information to describe, states where more possibilities are realized.</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>This is the foundation on which the connection between information theory and the [<span class="co">[</span><span class="ot">Free Energy Principle</span><span class="co">]</span>] is built — and it is why surprise, entropy, and free energy all turn out to be different faces of the same underlying idea.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
@@ -925,7 +845,7 @@ Apr 14, 2026
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/omertzuk/omertzuk.github.io/edit/main/garden/information-theory/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/omertzuk/omertzuk.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/omertzuk/omertzuk.github.io/edit/main/garden/information-theory/entropy_and_information.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/omertzuk/omertzuk.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This website is built with ❤️ and <a href="https://quarto.org/">Quarto</a>, by Omer Tzuk. License: <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
 </div>

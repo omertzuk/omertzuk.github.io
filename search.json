@@ -434,6 +434,48 @@
     "text": "Inspiration\nThe digital garden movement draws from:\n\nMaggie Appleton’s essay on garden history\nThe concept of “learning in public”\nThe Zettelkasten note-taking method\nWiki culture and networked thought\n\n\nThis is a seedling 🌱 — it will grow and change as the garden develops."
   },
   {
+    "objectID": "garden/information-theory/how-information-is-measured.html",
+    "href": "garden/information-theory/how-information-is-measured.html",
+    "title": "How Information is Measured?",
+    "section": "",
+    "text": "“Information is a difference that makes a difference.” — Gregory Bateson\nThe etymology of the word information comes from informare in latin, meaning - to give form. Let’s ponder on how can we measure information using the analogy to energy. Energy is an ancient concept that came from [[Aristotle]], who coined the term Ergon, coming from the Proto-Indo-European root _*werg_ that means “to do”, in the sense of to do work. So the important thing about energy is that we can measure it, and that you can measure the amount of energy in heat, or work (the physical concept of work), and many other forms of energy. The [[Bit]] is the unit of information, and it stands for - BInary digiT. The idea is that a bit is a measure of difference, between two possibilities: 0 and 1, True or False, Hot or Cold, etc."
+  },
+  {
+    "objectID": "garden/information-theory/how-information-is-measured.html#batesons-definition",
+    "href": "garden/information-theory/how-information-is-measured.html#batesons-definition",
+    "title": "How Information is Measured?",
+    "section": "Bateson’s Definition",
+    "text": "Bateson’s Definition\nGregory Bateson was a polymath — anthropologist, cyberneticist, biologist, and systems theorist — whose work spanned the mid-20th century. His definition of information as “a difference that makes a difference” comes from his 1972 collection Steps to an Ecology of Mind, and it has two distinct parts worth unpacking carefully.\nThe first “difference” is physical — a distinction in the world. The contrast between light and shadow on a page. A change in air pressure that reaches your eardrum. A particular sequence of base pairs in DNA rather than another.\nThe second “difference” is what happens to a receiver. The same physical difference can be information to one system and noise to another. A bat hears the difference between echoes that you cannot. Your immune system “reads” a molecular difference that your conscious mind is entirely unaware of.\nSo Bateson’s definition quietly smuggles in something radical: information is not a property of a signal alone, but of a relationship between a signal and a receiver. A difference only becomes information when it lands somewhere that can be changed by it — which brings us back to the etymology: informare, to give form. Information is whatever reshapes the receiver’s internal form."
+  },
+  {
+    "objectID": "garden/information-theory/how-information-is-measured.html#how-much-can-n-bits-hold",
+    "href": "garden/information-theory/how-information-is-measured.html#how-much-can-n-bits-hold",
+    "title": "How Information is Measured?",
+    "section": "How Much Can n Bits Hold?",
+    "text": "How Much Can n Bits Hold?\nThe relationship between bits and the number of things they can represent is exponential: n bits can distinguish exactly 2ⁿ distinct states. One bit gives you 2 possibilities. Ten bits give you 1,024 — just over a thousand. Thirty bits give you over a billion. The number grows so fast that a relatively small number of bits can represent an almost incomprehensibly large number of things.\nA useful approximation to keep in mind: 2¹⁰ ≈ 10³, meaning every 10 bits you add multiplies your capacity by roughly a thousand. So 20 bits ≈ one million states, 30 bits ≈ one billion, and so on."
+  },
+  {
+    "objectID": "garden/information-theory/how-information-is-measured.html#labeling-everything",
+    "href": "garden/information-theory/how-information-is-measured.html#labeling-everything",
+    "title": "How Information is Measured?",
+    "section": "Labeling Everything",
+    "text": "Labeling Everything\nOne of the most striking applications of this is labeling. You don’t need to understand something to give it a unique name — you just need enough bits to distinguish it from everything else. The supermarket barcode works exactly this way: a short sequence of binary stripes, encoding a number that points to a specific product in a database.\nScaling this up: the observable universe contains approximately 10⁹⁰ elementary particles. Since 2¹⁰ ≈ 10³, we have:\n\\[2^{300} \\approx 10^{90}\\]\nSo 300 bits suffice to assign a unique label to every particle in the observable universe. You could, in principle, write a barcode for every photon, every electron, every quark — and that barcode would be only 300 digits long in binary."
+  },
+  {
+    "objectID": "garden/information-theory/how-information-is-measured.html#how-many-bits-does-the-universe-contain",
+    "href": "garden/information-theory/how-information-is-measured.html#how-many-bits-does-the-universe-contain",
+    "title": "How Information is Measured?",
+    "section": "How Many Bits Does the Universe Contain?",
+    "text": "How Many Bits Does the Universe Contain?\nThe observable universe — everything within roughly 13 billion light-years, accessible to us since the Big Bang — is not infinite. And remarkably, neither is the information it contains. This follows from the laws of quantum mechanics, which place hard physical limits on how much information any region of space can hold.\nThe universe contains around \\(10^{90}\\) particles, most of them microwave photons — remnants of the Big Bang that permeate all of space right now, invisible to us but everywhere. Each carries a small number of bits. But if we push to the absolute limits allowed by physics — accounting for every possible degree of freedom at the finest scales — the total information capacity of the observable universe is estimated at:\n\\[10^{120} \\text{ bits}\\]\nThat is a 1 followed by 120 zeros. It is an enormous number, but it is finite. You can always name a larger number — \\(10^{121}\\), or \\(10^{240}\\) — which means the universe, for all its vastness, does not contain all possible information. It is a very large message, but a bounded one.\nFor comparison, human DNA encodes around six billion bits — roughly 3 billion base pairs, with 4 possible bases at each position (2 bits per pair). That’s vastly more than the 300 bits needed to label every particle in the universe, yet still an almost inconceivably small fraction of the universe’s total information capacity. And what does all that genetic information encode? Not labels, but possibilities — the genetic combinations that program a living organism. We share 99.8% of those bits with other humans, 99% with chimpanzees, and most of the rest with yeast. What makes you you is a remarkably thin sliver of difference. Bateson’s insight, made literal."
+  },
+  {
+    "objectID": "garden/information-theory/how-information-is-measured.html#information-can-be-measured-independently-of-meaning",
+    "href": "garden/information-theory/how-information-is-measured.html#information-can-be-measured-independently-of-meaning",
+    "title": "How Information is Measured?",
+    "section": "Information Can Be Measured Independently of Meaning",
+    "text": "Information Can Be Measured Independently of Meaning\nThis is the crucial insight Claude Shannon gave us: information can be quantified without asking what it means. A 300-bit label for a microwave photon carries the same number of bits as a 300-bit passage of poetry — the physical quantity of information is identical, even though one is arbitrary and the other is rich with significance.\nThis is precisely where Shannon’s framework diverges from Bateson’s. Shannon measures information at the level of the signal — pure distinguishability, independent of receiver or context. Bateson reminds us that a difference only becomes information when it lands on something that can be changed by it. Both perspectives are true, and the tension between them runs through everything that follows."
+  },
+  {
     "objectID": "garden/ecology/vegetation-patterns.html",
     "href": "garden/ecology/vegetation-patterns.html",
     "title": "Vegetation Pattern Formation",
@@ -788,11 +830,46 @@
     ]
   },
   {
+    "objectID": "garden/information-theory/entropy_and_information.html",
+    "href": "garden/information-theory/entropy_and_information.html",
+    "title": "Entropy and Information",
+    "section": "",
+    "text": "There is a famous slogan from Rolf Landauer at IBM: “Information is physical.” Like Bateson’s definition, it rewards careful unpacking.\nThe first meaning is straightforward: every bit we know of is represented by a physical system with two distinguishable states. A transistor in a computer is a switch — open (no current flows, call it 0) or closed (current flows, call it 1). A photon entering your eye is either present (1) or absent (0). Light can even be polarized in two different orientations, giving another physical implementation of the same binary distinction. In each case, the abstraction of a bit is grounded in a concrete physical object that can be in one of two states.\nThe second, deeper meaning is the converse: all physical systems contain information. Any system with \\(N\\) distinguishable states encodes:\n\\[\\text{bits} = \\log_2 N\\]\nIf \\(N = 8\\), that’s \\(\\log_2 8 = 3\\) bits — exactly the number of binary digits needed to write 8 in binary (1000). If \\(N = 3\\) (say, a system that can be in states yes, no, or maybe), then it encodes \\(\\log_2 3 \\approx 1.58\\) bits — a non-integer, sitting between 1 and 2 bits, but information nonetheless. Any physical system with distinguishable states is, in this sense, storing information."
+  },
+  {
+    "objectID": "garden/information-theory/entropy_and_information.html#information-is-physical",
+    "href": "garden/information-theory/entropy_and_information.html#information-is-physical",
+    "title": "Entropy and Information",
+    "section": "",
+    "text": "There is a famous slogan from Rolf Landauer at IBM: “Information is physical.” Like Bateson’s definition, it rewards careful unpacking.\nThe first meaning is straightforward: every bit we know of is represented by a physical system with two distinguishable states. A transistor in a computer is a switch — open (no current flows, call it 0) or closed (current flows, call it 1). A photon entering your eye is either present (1) or absent (0). Light can even be polarized in two different orientations, giving another physical implementation of the same binary distinction. In each case, the abstraction of a bit is grounded in a concrete physical object that can be in one of two states.\nThe second, deeper meaning is the converse: all physical systems contain information. Any system with \\(N\\) distinguishable states encodes:\n\\[\\text{bits} = \\log_2 N\\]\nIf \\(N = 8\\), that’s \\(\\log_2 8 = 3\\) bits — exactly the number of binary digits needed to write 8 in binary (1000). If \\(N = 3\\) (say, a system that can be in states yes, no, or maybe), then it encodes \\(\\log_2 3 \\approx 1.58\\) bits — a non-integer, sitting between 1 and 2 bits, but information nonetheless. Any physical system with distinguishable states is, in this sense, storing information."
+  },
+  {
+    "objectID": "garden/information-theory/entropy_and_information.html#boltzmanns-insight-entropy-as-information",
+    "href": "garden/information-theory/entropy_and_information.html#boltzmanns-insight-entropy-as-information",
+    "title": "Entropy and Information",
+    "section": "Boltzmann’s Insight: Entropy as Information",
+    "text": "Boltzmann’s Insight: Entropy as Information\nThis observation — that physical systems register information through their number of possible states — was not first made by information theorists. It was made by 19th century physicists trying to understand heat engines.\nPhysicists like Maxwell, Boltzmann, and Gibbs were grappling with a puzzling constraint: when you convert heat into mechanical work (as in a steam engine), you can never extract all the energy. Something always gets left behind. They called this leftover quantity entropy — a measure of disorder or randomness in a system.\nThe key insight came when they understood heat as the collective kinetic energy of microscopic molecules bouncing around. A gas in a cylinder has an enormous number of possible arrangements — different positions and velocities for each molecule. Boltzmann called these arrangements complexions. And he noticed that if you let \\(N\\) be the number of possible complexions, then the quantity:\n\\[S = k \\log N\\]\n— where \\(k\\) is a constant (now called [[Boltzmann’s constant]]) — behaved exactly like entropy. It never decreased. It gunged up the works of heat engines. It was the thermodynamic quantity they had been measuring all along.\nBut look at what \\(\\log N\\) is: it is precisely the number of bits required to label each possible state of the system. Entropy, it turns out, is just the amount of information needed to fully describe the microscopic state of a physical system.\nThis formula is so fundamental that it appears engraved on Boltzmann’s tombstone in Vienna — a fitting monument for a man who, despite dying in 1906 before his ideas were fully accepted, had quietly unified thermodynamics and information theory decades before Shannon formalized the connection."
+  },
+  {
+    "objectID": "garden/information-theory/entropy_and_information.html#the-convergence-shannon-meets-boltzmann",
+    "href": "garden/information-theory/entropy_and_information.html#the-convergence-shannon-meets-boltzmann",
+    "title": "Entropy and Information",
+    "section": "The Convergence: Shannon Meets Boltzmann",
+    "text": "The Convergence: Shannon Meets Boltzmann\nWhen [[Claude Shannon]] developed his mathematical theory of communication in 1948, he needed a measure of uncertainty — a way to quantify how much information a message could contain. The formula he arrived at was:\n\\[H = -\\sum_i p_i \\log_2 p_i\\]\nHis colleagues immediately noticed: this is structurally identical to Boltzmann’s entropy formula. Shannon reportedly asked [[John von Neumann]] what to call his new quantity. Von Neumann’s reply was characteristically wry: call it entropy, since nobody really knows what entropy is anyway, and you’ll always have the advantage in any argument.\nThe deep reason they converge is not coincidence — it is that both are measuring the same thing from different angles. Boltzmann was asking: how many microscopic states are consistent with what I can observe? Shannon was asking: how uncertain am I about which message was sent? Both questions are, at bottom, questions about the number of distinguishable possibilities — and the logarithm of that number is the answer to both."
+  },
+  {
+    "objectID": "garden/information-theory/entropy_and_information.html#why-this-matters",
+    "href": "garden/information-theory/entropy_and_information.html#why-this-matters",
+    "title": "Entropy and Information",
+    "section": "Why This Matters",
+    "text": "Why This Matters\nThe convergence of entropy and information is not just a mathematical curiosity. It means that:\n\nDisorder is information — a highly disordered system is one with many possible states, and therefore one that contains (or requires) a large amount of information to fully describe.\nInformation has physical costs — because bits are physical, manipulating them (flipping a switch, erasing a memory) has thermodynamic consequences. Landauer’s principle states that erasing one bit of information must dissipate a minimum amount of heat into the environment.\nThe universe tends toward higher entropy — which is the same as saying it tends toward states that require more information to describe, states where more possibilities are realized.\n\nThis is the foundation on which the connection between information theory and the [[Free Energy Principle]] is built — and it is why surprise, entropy, and free energy all turn out to be different faces of the same underlying idea."
+  },
+  {
     "objectID": "garden/information-theory/index.html",
     "href": "garden/information-theory/index.html",
     "title": "Information Theory",
     "section": "",
-    "text": "Notes, explorations, and experiments related to information theory, entropy, coding, and the mathematics of communication and knowledge.\n\n\n\nShannon entropy and mutual information\nInformation geometry\nPredictive coding and the Free Energy Principle\nInformation flow in complex systems\nCompression and representation learning\nInformation-theoretic approaches to consciousness\n\n\n\n\n\n\nNo matching items",
+    "text": "Notes, explorations, and experiments related to information theory, entropy, coding, and the mathematics of communication and knowledge.\n\n\n\nHow information is measured? — surprise, entropy, Shannon\nInformation geometry\nPredictive coding and the Free Energy Principle\nInformation flow in complex systems\nCompression and representation learning\nInformation-theoretic approaches to consciousness\n\n\n\n\n\n\n\n\n\n\n\nentropy\n\nshannon\n\nthermodynamics\n\nbits\n\nphysical-information\n\n\n\nHow 19th century thermodynamics and 20th century information theory converged on the same idea\n\n\n\nApr 14, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nentropy\n\nfoundations\n\nshannon\n\n\n\nFrom surprise to entropy — the mathematical foundations of measuring information\n\n\n\nApr 14, 2026\n\n\n\n\n\n\nNo matching items",
     "crumbs": [
       "Information Theory"
     ]
@@ -802,7 +879,7 @@
     "href": "garden/information-theory/index.html#information-theory",
     "title": "Information Theory",
     "section": "",
-    "text": "Notes, explorations, and experiments related to information theory, entropy, coding, and the mathematics of communication and knowledge.\n\n\n\nShannon entropy and mutual information\nInformation geometry\nPredictive coding and the Free Energy Principle\nInformation flow in complex systems\nCompression and representation learning\nInformation-theoretic approaches to consciousness\n\n\n\n\n\n\nNo matching items",
+    "text": "Notes, explorations, and experiments related to information theory, entropy, coding, and the mathematics of communication and knowledge.\n\n\n\nHow information is measured? — surprise, entropy, Shannon\nInformation geometry\nPredictive coding and the Free Energy Principle\nInformation flow in complex systems\nCompression and representation learning\nInformation-theoretic approaches to consciousness\n\n\n\n\n\n\n\n\n\n\n\nentropy\n\nshannon\n\nthermodynamics\n\nbits\n\nphysical-information\n\n\n\nHow 19th century thermodynamics and 20th century information theory converged on the same idea\n\n\n\nApr 14, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nentropy\n\nfoundations\n\nshannon\n\n\n\nFrom surprise to entropy — the mathematical foundations of measuring information\n\n\n\nApr 14, 2026\n\n\n\n\n\n\nNo matching items",
     "crumbs": [
       "Information Theory"
     ]

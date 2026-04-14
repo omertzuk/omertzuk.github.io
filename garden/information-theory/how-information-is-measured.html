@@ -7,8 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Omer Tzuk">
+<meta name="dcterms.date" content="2026-04-14">
+<meta name="description" content="From surprise to entropy — the mathematical foundations of measuring information">
 
-<title>Information Theory – Omer Tzuk</title>
+<title>How Information is Measured? – Omer Tzuk</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,8 +68,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-listing/list.min.js"></script>
-<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -106,35 +106,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -167,13 +138,13 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Information Theory – Omer Tzuk">
-<meta property="og:description" content="Omer Tzuk’s Website">
+<meta property="og:title" content="How Information is Measured? – Omer Tzuk">
+<meta property="og:description" content="From surprise to entropy — the mathematical foundations of measuring information">
 <meta property="og:image" content="https://omertzuk.github.io/garden/information-theory/featured.png">
 <meta property="og:site_name" content="Omer Tzuk">
 </head>
 
-<body class="nav-sidebar floating nav-fixed quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -250,78 +221,42 @@ window.Quarto = {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../garden/information-theory/index.html">Information Theory</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../digital-garden.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Welcome</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../garden/information-theory/index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Information Theory</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../garden/complex-systems/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Complex Systems</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../garden/consciousness/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Consciousness</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../garden/ecology/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ecology</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#information-theory" id="toc-information-theory" class="nav-link active" data-scroll-target="#information-theory">Information Theory</a>
-  <ul class="collapse">
-  <li><a href="#topics-to-explore" id="toc-topics-to-explore" class="nav-link" data-scroll-target="#topics-to-explore">Topics to explore:</a></li>
-  </ul></li>
+  <li><a href="#batesons-definition" id="toc-batesons-definition" class="nav-link active" data-scroll-target="#batesons-definition">Bateson’s Definition</a></li>
+  <li><a href="#how-much-can-n-bits-hold" id="toc-how-much-can-n-bits-hold" class="nav-link" data-scroll-target="#how-much-can-n-bits-hold">How Much Can <em>n</em> Bits Hold?</a></li>
+  <li><a href="#labeling-everything" id="toc-labeling-everything" class="nav-link" data-scroll-target="#labeling-everything">Labeling Everything</a></li>
+  <li><a href="#how-many-bits-does-the-universe-contain" id="toc-how-many-bits-does-the-universe-contain" class="nav-link" data-scroll-target="#how-many-bits-does-the-universe-contain">How Many Bits Does the Universe Contain?</a></li>
+  <li><a href="#information-can-be-measured-independently-of-meaning" id="toc-information-can-be-measured-independently-of-meaning" class="nav-link" data-scroll-target="#information-can-be-measured-independently-of-meaning">Information Can Be Measured Independently of Meaning</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/omertzuk/omertzuk.github.io/edit/main/garden/information-theory/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/omertzuk/omertzuk.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Yml0cw==">bits <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZW50cm9weQ==">entropy <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Zm91bmRhdGlvbnM=">foundations <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGh5c2ljYWwtaW5mb3JtYXRpb24=">physical-information <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2hhbm5vbg==">shannon <span class="quarto-category-count">(2)</span></div><div class="category" data-category="dGhlcm1vZHluYW1pY3M=">thermodynamics <span class="quarto-category-count">(1)</span></div></div></div>
+<div class="toc-actions"><ul><li><a href="https://github.com/omertzuk/omertzuk.github.io/edit/main/garden/information-theory/how-information-is-measured.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/omertzuk/omertzuk.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Information Theory</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
-</div>
+<div class="quarto-title-block"><div><h1 class="title">How Information is Measured?</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+  <div class="quarto-categories">
+    <div class="quarto-category">entropy</div>
+    <div class="quarto-category">foundations</div>
+    <div class="quarto-category">shannon</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    From surprise to entropy — the mathematical foundations of measuring information
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -333,6 +268,12 @@ window.Quarto = {
           </div>
   </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 14, 2026</p>
+    </div>
+  </div>
   
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
@@ -348,89 +289,45 @@ window.Quarto = {
 </header>
 
 
-<section id="information-theory" class="level2">
-<h2 class="anchored" data-anchor-id="information-theory">Information Theory</h2>
-<p>Notes, explorations, and experiments related to information theory, entropy, coding, and the mathematics of communication and knowledge.</p>
-<section id="topics-to-explore" class="level3">
-<h3 class="anchored" data-anchor-id="topics-to-explore">Topics to explore:</h3>
-<ul>
-<li><a href="../../garden/information-theory/how-information-is-measured.html">How information is measured?</a> — surprise, entropy, Shannon</li>
-<li>Information geometry</li>
-<li>Predictive coding and the Free Energy Principle</li>
-<li>Information flow in complex systems</li>
-<li>Compression and representation learning</li>
-<li>Information-theoretic approaches to consciousness</li>
-</ul>
-<hr>
-<div id="listing-listing" class="quarto-listing quarto-listing-container-grid">
-<div class="list grid quarto-listing-cols-2">
-<div class="g-col-1" data-index="0" data-categories="ZW50cm9weSUyQ3NoYW5ub24lMkN0aGVybW9keW5hbWljcyUyQ2JpdHMlMkNwaHlzaWNhbC1pbmZvcm1hdGlvbg==" data-listing-date-sort="1776114000000" data-listing-file-modified-sort="1776170050150" data-listing-date-modified-sort="1776170050000" data-listing-reading-time-sort="4" data-listing-word-count-sort="798">
-<a href="../../garden/information-theory/entropy_and_information.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Entropy and Information
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZW50cm9weQ=='); return false;">entropy</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('c2hhbm5vbg=='); return false;">shannon</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dGhlcm1vZHluYW1pY3M='); return false;">thermodynamics</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Yml0cw=='); return false;">bits</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cGh5c2ljYWwtaW5mb3JtYXRpb24='); return false;">physical-information</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>How 19th century thermodynamics and 20th century information theory converged on the same idea</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Apr 14, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="ZW50cm9weSUyQ2ZvdW5kYXRpb25zJTJDc2hhbm5vbg==" data-listing-date-sort="1776114000000" data-listing-file-modified-sort="1776170052321" data-listing-date-modified-sort="1776170052000" data-listing-reading-time-sort="5" data-listing-word-count-sort="980">
-<a href="../../garden/information-theory/how-information-is-measured.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-How Information is Measured?
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZW50cm9weQ=='); return false;">entropy</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Zm91bmRhdGlvbnM='); return false;">foundations</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('c2hhbm5vbg=='); return false;">shannon</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>From surprise to entropy — the mathematical foundations of measuring information</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Apr 14, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
-
+<blockquote class="blockquote">
+<p>“Information is a difference that makes a difference.” — Gregory Bateson</p>
+</blockquote>
+<p>The etymology of the word information comes from <em>informare</em> in latin, meaning - to give form. Let’s ponder on how can we measure information using the analogy to energy. Energy is an ancient concept that came from [[Aristotle]], who coined the term Ergon, coming from the Proto-Indo-European root _*werg_ that means “to do”, in the sense of to do work. So the important thing about energy is that we can measure it, and that you can measure the amount of energy in heat, or work (the physical concept of work), and many other forms of energy. The [[Bit]] is the unit of information, and it stands for - BInary digiT. The idea is that a bit is a measure of difference, between two possibilities: 0 and 1, True or False, Hot or Cold, etc.</p>
+<section id="batesons-definition" class="level2">
+<h2 class="anchored" data-anchor-id="batesons-definition">Bateson’s Definition</h2>
+<p>Gregory Bateson was a polymath — anthropologist, cyberneticist, biologist, and systems theorist — whose work spanned the mid-20th century. His definition of information as <em>“a difference that makes a difference”</em> comes from his 1972 collection <em>Steps to an Ecology of Mind</em>, and it has two distinct parts worth unpacking carefully.</p>
+<p><strong>The first “difference”</strong> is physical — a distinction in the world. The contrast between light and shadow on a page. A change in air pressure that reaches your eardrum. A particular sequence of base pairs in DNA rather than another.</p>
+<p><strong>The second “difference”</strong> is what happens <em>to a receiver</em>. The same physical difference can be information to one system and noise to another. A bat hears the difference between echoes that you cannot. Your immune system “reads” a molecular difference that your conscious mind is entirely unaware of.</p>
+<p>So Bateson’s definition quietly smuggles in something radical: <strong>information is not a property of a signal alone, but of a relationship between a signal and a receiver</strong>. A difference only <em>becomes</em> information when it lands somewhere that can be changed by it — which brings us back to the etymology: <em>informare</em>, to give form. Information is whatever reshapes the receiver’s internal form.</p>
+</section>
+<section id="how-much-can-n-bits-hold" class="level2">
+<h2 class="anchored" data-anchor-id="how-much-can-n-bits-hold">How Much Can <em>n</em> Bits Hold?</h2>
+<p>The relationship between bits and the number of things they can represent is exponential: <em>n</em> bits can distinguish exactly <strong>2ⁿ distinct states</strong>. One bit gives you 2 possibilities. Ten bits give you 1,024 — just over a thousand. Thirty bits give you over a billion. The number grows so fast that a relatively small number of bits can represent an almost incomprehensibly large number of things.</p>
+<p>A useful approximation to keep in mind: <strong>2¹⁰ ≈ 10³</strong>, meaning every 10 bits you add multiplies your capacity by roughly a thousand. So 20 bits ≈ one million states, 30 bits ≈ one billion, and so on.</p>
+</section>
+<section id="labeling-everything" class="level2">
+<h2 class="anchored" data-anchor-id="labeling-everything">Labeling Everything</h2>
+<p>One of the most striking applications of this is labeling. You don’t need to <em>understand</em> something to give it a unique name — you just need enough bits to distinguish it from everything else. The supermarket barcode works exactly this way: a short sequence of binary stripes, encoding a number that points to a specific product in a database.</p>
+<p>Scaling this up: the observable universe contains approximately 10⁹⁰ elementary particles. Since 2¹⁰ ≈ 10³, we have:</p>
+<p><span class="math display">\[2^{300} \approx 10^{90}\]</span></p>
+<p>So <strong>300 bits suffice to assign a unique label to every particle in the observable universe</strong>. You could, in principle, write a barcode for every photon, every electron, every quark — and that barcode would be only 300 digits long in binary.</p>
+</section>
+<section id="how-many-bits-does-the-universe-contain" class="level2">
+<h2 class="anchored" data-anchor-id="how-many-bits-does-the-universe-contain">How Many Bits Does the Universe Contain?</h2>
+<p>The observable universe — everything within roughly 13 billion light-years, accessible to us since the Big Bang — is not infinite. And remarkably, neither is the information it contains. This follows from the laws of quantum mechanics, which place hard physical limits on how much information any region of space can hold.</p>
+<p>The universe contains around <span class="math inline">\(10^{90}\)</span> particles, most of them microwave photons — remnants of the Big Bang that permeate all of space right now, invisible to us but everywhere. Each carries a small number of bits. But if we push to the absolute limits allowed by physics — accounting for every possible degree of freedom at the finest scales — the total information capacity of the observable universe is estimated at:</p>
+<p><span class="math display">\[10^{120} \text{ bits}\]</span></p>
+<p>That is a 1 followed by 120 zeros. It is an enormous number, but it is <em>finite</em>. You can always name a larger number — <span class="math inline">\(10^{121}\)</span>, or <span class="math inline">\(10^{240}\)</span> — which means the universe, for all its vastness, does not contain all possible information. It is a very large message, but a bounded one.</p>
+<p>For comparison, human DNA encodes around <strong>six billion bits</strong> — roughly 3 billion base pairs, with 4 possible bases at each position (2 bits per pair). That’s vastly more than the 300 bits needed to label every particle in the universe, yet still an almost inconceivably small fraction of the universe’s total information capacity. And what does all that genetic information encode? Not labels, but <em>possibilities</em> — the genetic combinations that program a living organism. We share 99.8% of those bits with other humans, 99% with chimpanzees, and most of the rest with yeast. What makes you <em>you</em> is a remarkably thin sliver of difference. Bateson’s insight, made literal.</p>
+</section>
+<section id="information-can-be-measured-independently-of-meaning" class="level2">
+<h2 class="anchored" data-anchor-id="information-can-be-measured-independently-of-meaning">Information Can Be Measured Independently of Meaning</h2>
+<p>This is the crucial insight Claude Shannon gave us: <strong>information can be quantified without asking what it means</strong>. A 300-bit label for a microwave photon carries the same number of bits as a 300-bit passage of poetry — the physical quantity of information is identical, even though one is arbitrary and the other is rich with significance.</p>
+<p>This is precisely where Shannon’s framework diverges from Bateson’s. Shannon measures information at the level of the signal — pure distinguishability, independent of receiver or context. Bateson reminds us that a difference only <em>becomes</em> information when it lands on something that can be changed by it. Both perspectives are true, and the tension between them runs through everything that follows.</p>
 
 
 <!-- -->
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -886,36 +783,59 @@ Apr 14, 2026
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Information Theory"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">listing:</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">  contents: </span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">    - "*.qmd"</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">    - "*.ipynb"</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">    - "!index.qmd"</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">  sort: "date desc"</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  type: grid</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">  grid-columns: 2</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">  fields: [date, title, description, categories]</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">  categories: true</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Information Theory</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>Notes, explorations, and experiments related to information theory, entropy, coding, and the mathematics of communication and knowledge.</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">### Topics to explore:</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">How information is measured?</span><span class="co">](how-information-is-measured.qmd)</span> — surprise, entropy, Shannon</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Information geometry</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Predictive coding and the Free Energy Principle</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Information flow in complex systems</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Compression and representation learning</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Information-theoretic approaches to consciousness</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "How Information is Measured?"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2026-04-14</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "From surprise to entropy — the mathematical foundations of measuring information"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [entropy, foundations, shannon]</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; "Information is a difference that makes a difference."</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; — Gregory Bateson</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>The etymology of the word information comes from _informare_ in latin, meaning - to give form. Let's ponder on how can we measure information using the analogy to energy. Energy is an ancient concept that came from [[Aristotle]], who coined the term Ergon, coming from the Proto-Indo-European root _*werg_ that means "to do", in the sense of to do work. So the important thing about energy is that we can measure it, and that you can measure the amount of energy in heat, or work (the physical concept of work), and many other forms of energy. The [<span class="co">[</span><span class="ot">Bit</span><span class="co">]</span>] is the unit of information, and it stands for - BInary digiT. The idea is that a bit is a measure of difference, between two possibilities: 0 and 1, True or False, Hot or Cold, etc.</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">## Bateson's Definition</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>Gregory Bateson was a polymath — anthropologist, cyberneticist, biologist, and systems theorist — whose work spanned the mid-20th century. His definition of information as *"a difference that makes a difference"* comes from his 1972 collection *Steps to an Ecology of Mind*, and it has two distinct parts worth unpacking carefully.</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>**The first "difference"** is physical — a distinction in the world. The contrast between light and shadow on a page. A change in air pressure that reaches your eardrum. A particular sequence of base pairs in DNA rather than another.</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>**The second "difference"** is what happens *to a receiver*. The same physical difference can be information to one system and noise to another. A bat hears the difference between echoes that you cannot. Your immune system "reads" a molecular difference that your conscious mind is entirely unaware of.</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>So Bateson's definition quietly smuggles in something radical: **information is not a property of a signal alone, but of a relationship between a signal and a receiver**. A difference only *becomes* information when it lands somewhere that can be changed by it — which brings us back to the etymology: *informare*, to give form. Information is whatever reshapes the receiver's internal form.</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">## How Much Can *n* Bits Hold?</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>The relationship between bits and the number of things they can represent is exponential: *n* bits can distinguish exactly **2ⁿ distinct states**. One bit gives you 2 possibilities. Ten bits give you 1,024 — just over a thousand. Thirty bits give you over a billion. The number grows so fast that a relatively small number of bits can represent an almost incomprehensibly large number of things.</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>A useful approximation to keep in mind: **2¹⁰ ≈ 10³**, meaning every 10 bits you add multiplies your capacity by roughly a thousand. So 20 bits ≈ one million states, 30 bits ≈ one billion, and so on.</span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## Labeling Everything</span></span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>::: {#listing}</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>One of the most striking applications of this is labeling. You don't need to *understand* something to give it a unique name — you just need enough bits to distinguish it from everything else. The supermarket barcode works exactly this way: a short sequence of binary stripes, encoding a number that points to a specific product in a database.</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>Scaling this up: the observable universe contains approximately 10⁹⁰ elementary particles. Since 2¹⁰ ≈ 10³, we have:</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>$$2^{300} \approx 10^{90}$$</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>So **300 bits suffice to assign a unique label to every particle in the observable universe**. You could, in principle, write a barcode for every photon, every electron, every quark — and that barcode would be only 300 digits long in binary.</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="fu">## How Many Bits Does the Universe Contain?</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>The observable universe — everything within roughly 13 billion light-years, accessible to us since the Big Bang — is not infinite. And remarkably, neither is the information it contains. This follows from the laws of quantum mechanics, which place hard physical limits on how much information any region of space can hold.</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>The universe contains around $10^{90}$ particles, most of them microwave photons — remnants of the Big Bang that permeate all of space right now, invisible to us but everywhere. Each carries a small number of bits. But if we push to the absolute limits allowed by physics — accounting for every possible degree of freedom at the finest scales — the total information capacity of the observable universe is estimated at:</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>$$10^{120} \text{ bits}$$</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>That is a 1 followed by 120 zeros. It is an enormous number, but it is *finite*. You can always name a larger number — $10^{121}$, or $10^{240}$ — which means the universe, for all its vastness, does not contain all possible information. It is a very large message, but a bounded one.</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>For comparison, human DNA encodes around **six billion bits** — roughly 3 billion base pairs, with 4 possible bases at each position (2 bits per pair). That's vastly more than the 300 bits needed to label every particle in the universe, yet still an almost inconceivably small fraction of the universe's total information capacity. And what does all that genetic information encode? Not labels, but *possibilities* — the genetic combinations that program a living organism. We share 99.8% of those bits with other humans, 99% with chimpanzees, and most of the rest with yeast. What makes you *you* is a remarkably thin sliver of difference. Bateson's insight, made literal.</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="fu">## Information Can Be Measured Independently of Meaning</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>This is the crucial insight Claude Shannon gave us: **information can be quantified without asking what it means**. A 300-bit label for a microwave photon carries the same number of bits as a 300-bit passage of poetry — the physical quantity of information is identical, even though one is arbitrary and the other is rich with significance.</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>This is precisely where Shannon's framework diverges from Bateson's. Shannon measures information at the level of the signal — pure distinguishability, independent of receiver or context. Bateson reminds us that a difference only *becomes* information when it lands on something that can be changed by it. Both perspectives are true, and the tension between them runs through everything that follows.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
@@ -925,7 +845,7 @@ Apr 14, 2026
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/omertzuk/omertzuk.github.io/edit/main/garden/information-theory/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/omertzuk/omertzuk.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/omertzuk/omertzuk.github.io/edit/main/garden/information-theory/how-information-is-measured.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/omertzuk/omertzuk.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This website is built with ❤️ and <a href="https://quarto.org/">Quarto</a>, by Omer Tzuk. License: <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
 </div>
