@@ -475,7 +475,6 @@
     "section": "",
     "text": "Explorations of emergence, self-organization, networks, and the dynamics of interconnected systems.\n\n\n\nPattern formation and self-organization\nNetwork theory and graph dynamics\nBifurcations and critical transitions\nAgent-based modeling\nChaos and nonlinear dynamics\nScale-free phenomena and power laws\nResilience and tipping points\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items",
     "crumbs": [
-      "Topics",
       "Complex Systems"
     ]
   },
@@ -486,7 +485,6 @@
     "section": "",
     "text": "Explorations of emergence, self-organization, networks, and the dynamics of interconnected systems.\n\n\n\nPattern formation and self-organization\nNetwork theory and graph dynamics\nBifurcations and critical transitions\nAgent-based modeling\nChaos and nonlinear dynamics\nScale-free phenomena and power laws\nResilience and tipping points\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items",
     "crumbs": [
-      "Topics",
       "Complex Systems"
     ]
   },
@@ -658,31 +656,61 @@
   {
     "objectID": "digital-garden.html",
     "href": "digital-garden.html",
-    "title": "Digital Garden",
+    "title": "Welcome to the Garden",
     "section": "",
-    "text": "This is my digital garden — a space between formal publications and fleeting notes. Unlike a blog with polished posts, this garden grows organically with:\n\n🌱 Seedlings: Early ideas, quick experiments, things I’m exploring\n🌿 Growing: Developing thoughts, work in progress, evolving frameworks\n\n🌳 Evergreens: Mature ideas that continue to be refined and expanded\n\nContent here includes:\n\nJupyter notebooks exploring data, models, or concepts\nNotes on papers, books, and ideas\nVisualizations and interactive demos\nTechnical experiments and code snippets\nReflections connecting across domains\n\nNothing here is “finished” — these ideas grow, change, and branch over time. Come back often to see what’s blooming.",
+    "text": "A digital garden is a different way of sharing knowledge online. Unlike blogs with polished, chronological posts, gardens are:\n\nEvergreen — notes are continuously updated and refined\nNon-linear — ideas connect through links, not just time\nWork in progress — imperfection is welcomed, growth is expected\nExploratory — a space for thinking in public",
     "crumbs": [
-      "Digital Garden"
+      "Welcome"
     ]
   },
   {
-    "objectID": "digital-garden.html#welcome-to-the-garden",
-    "href": "digital-garden.html#welcome-to-the-garden",
-    "title": "Digital Garden",
+    "objectID": "digital-garden.html#what-is-a-digital-garden",
+    "href": "digital-garden.html#what-is-a-digital-garden",
+    "title": "Welcome to the Garden",
     "section": "",
-    "text": "This is my digital garden — a space between formal publications and fleeting notes. Unlike a blog with polished posts, this garden grows organically with:\n\n🌱 Seedlings: Early ideas, quick experiments, things I’m exploring\n🌿 Growing: Developing thoughts, work in progress, evolving frameworks\n\n🌳 Evergreens: Mature ideas that continue to be refined and expanded\n\nContent here includes:\n\nJupyter notebooks exploring data, models, or concepts\nNotes on papers, books, and ideas\nVisualizations and interactive demos\nTechnical experiments and code snippets\nReflections connecting across domains\n\nNothing here is “finished” — these ideas grow, change, and branch over time. Come back often to see what’s blooming.",
+    "text": "A digital garden is a different way of sharing knowledge online. Unlike blogs with polished, chronological posts, gardens are:\n\nEvergreen — notes are continuously updated and refined\nNon-linear — ideas connect through links, not just time\nWork in progress — imperfection is welcomed, growth is expected\nExploratory — a space for thinking in public",
     "crumbs": [
-      "Digital Garden"
+      "Welcome"
     ]
   },
   {
-    "objectID": "digital-garden.html#garden-contents",
-    "href": "digital-garden.html#garden-contents",
-    "title": "Digital Garden",
-    "section": "Garden Contents",
-    "text": "Garden Contents\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nPredictive Processing & Active Inference\n\n\n\nconsciousness\n\nseedling\n\ntheory\n\n\n\nNotes on the brain as a prediction machine\n\n\n\nApr 14, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nVegetation Pattern Formation\n\n\n\necology\n\ngrowing\n\npatterns\n\n\n\nSelf-organization in dryland ecosystems\n\n\n\nApr 14, 2026\n\n\n\n\n\n\nNo matching items",
+    "objectID": "digital-garden.html#growth-stages",
+    "href": "digital-garden.html#growth-stages",
+    "title": "Welcome to the Garden",
+    "section": "Growth Stages 🌱",
+    "text": "Growth Stages 🌱\nI use a simple tagging system to indicate the maturity of each note:\n\nSeedling 🌱: Fresh ideas, rough notes, early explorations\nGrowing 🌿: Developing thoughts, partially formed\nEvergreen 🌳: Mature, refined, but still evolving",
     "crumbs": [
-      "Digital Garden"
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "digital-garden.html#what-youll-find-here",
+    "href": "digital-garden.html#what-youll-find-here",
+    "title": "Welcome to the Garden",
+    "section": "What You’ll Find Here",
+    "text": "What You’ll Find Here\nThis garden is organized into four main topics, each exploring different aspects of my research and thinking:\n\nInformation Theory: Entropy, coding, information geometry, predictive processing\nComplex Systems: Self-organization, networks, emergence, nonlinear dynamics\nConsciousness: Neuroscience, meditation, altered states, theories of mind\nEcology: Dryland systems, eco-hydrology, climate, vegetation patterns\n\nEach topic contains:\n\nJupyter notebooks exploring data, models, and simulations\nNotes on papers, books, and concepts\nExperiments with code, visualizations, and demos\nConnections linking ideas across domains",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "digital-garden.html#philosophy",
+    "href": "digital-garden.html#philosophy",
+    "title": "Welcome to the Garden",
+    "section": "Philosophy",
+    "text": "Philosophy\nNothing here is “finished” — these ideas grow, change, and branch over time. Come back often to see what’s blooming.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "digital-garden.html#inspiration",
+    "href": "digital-garden.html#inspiration",
+    "title": "Welcome to the Garden",
+    "section": "Inspiration",
+    "text": "Inspiration\nThe digital garden movement draws from:\n\nMaggie Appleton’s essay on garden history\nThe concept of “learning in public”\nThe Zettelkasten note-taking method\nWiki culture and networked thought\n\n\nUse the sidebar menu to explore different topics, or browse all entries within each topic page.",
+    "crumbs": [
+      "Welcome"
     ]
   },
   {
@@ -726,7 +754,6 @@
     "section": "",
     "text": "Investigations into the nature of subjective experience, contemplative science, and the neuroscience of awareness.\n\n\n\nPredictive processing and active inference\nAltered states of consciousness\nContemplative neuroscience and meditation\nNeurophenomenology and first-person methods\nEEG markers of consciousness\nTheories of consciousness (IIT, GWT, HOT, etc.)\nPsychedelics and transformative experience\nDeath anxiety and existential awareness\n\n\n\n\n\n\n\n\n\n\n\nconsciousness\n\nseedling\n\ntheory\n\n\n\nNotes on the brain as a prediction machine\n\n\n\nApr 14, 2026\n\n\n\n\n\n\nNo matching items",
     "crumbs": [
-      "Topics",
       "Consciousness"
     ]
   },
@@ -737,7 +764,6 @@
     "section": "",
     "text": "Investigations into the nature of subjective experience, contemplative science, and the neuroscience of awareness.\n\n\n\nPredictive processing and active inference\nAltered states of consciousness\nContemplative neuroscience and meditation\nNeurophenomenology and first-person methods\nEEG markers of consciousness\nTheories of consciousness (IIT, GWT, HOT, etc.)\nPsychedelics and transformative experience\nDeath anxiety and existential awareness\n\n\n\n\n\n\n\n\n\n\n\nconsciousness\n\nseedling\n\ntheory\n\n\n\nNotes on the brain as a prediction machine\n\n\n\nApr 14, 2026\n\n\n\n\n\n\nNo matching items",
     "crumbs": [
-      "Topics",
       "Consciousness"
     ]
   },
@@ -748,7 +774,6 @@
     "section": "",
     "text": "Work on dryland ecosystems, eco-hydrology, climate resilience, and the dynamics of vegetation and water.\n\n\n\nDryland vegetation patterns\nEco-hydrological modeling\nClimate change and ecosystem resilience\nSpatial self-organization in nature\nTree responses to drought\nSoil-water-plant dynamics\nAgroforestry systems\nEcosystem tipping points\n\n\n\n\n\n\n\n\n\n\n\necology\n\ngrowing\n\npatterns\n\n\n\nSelf-organization in dryland ecosystems\n\n\n\nApr 14, 2026\n\n\n\n\n\n\nNo matching items",
     "crumbs": [
-      "Topics",
       "Ecology"
     ]
   },
@@ -759,7 +784,6 @@
     "section": "",
     "text": "Work on dryland ecosystems, eco-hydrology, climate resilience, and the dynamics of vegetation and water.\n\n\n\nDryland vegetation patterns\nEco-hydrological modeling\nClimate change and ecosystem resilience\nSpatial self-organization in nature\nTree responses to drought\nSoil-water-plant dynamics\nAgroforestry systems\nEcosystem tipping points\n\n\n\n\n\n\n\n\n\n\n\necology\n\ngrowing\n\npatterns\n\n\n\nSelf-organization in dryland ecosystems\n\n\n\nApr 14, 2026\n\n\n\n\n\n\nNo matching items",
     "crumbs": [
-      "Topics",
       "Ecology"
     ]
   },
@@ -770,7 +794,6 @@
     "section": "",
     "text": "Notes, explorations, and experiments related to information theory, entropy, coding, and the mathematics of communication and knowledge.\n\n\n\nShannon entropy and mutual information\nInformation geometry\nPredictive coding and the Free Energy Principle\nInformation flow in complex systems\nCompression and representation learning\nInformation-theoretic approaches to consciousness\n\n\n\n\n\n\nNo matching items",
     "crumbs": [
-      "Topics",
       "Information Theory"
     ]
   },
@@ -781,7 +804,6 @@
     "section": "",
     "text": "Notes, explorations, and experiments related to information theory, entropy, coding, and the mathematics of communication and knowledge.\n\n\n\nShannon entropy and mutual information\nInformation geometry\nPredictive coding and the Free Energy Principle\nInformation flow in complex systems\nCompression and representation learning\nInformation-theoretic approaches to consciousness\n\n\n\n\n\n\nNo matching items",
     "crumbs": [
-      "Topics",
       "Information Theory"
     ]
   },

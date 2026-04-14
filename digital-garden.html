@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Digital Garden – Omer Tzuk</title>
+<title>Welcome to the Garden – Omer Tzuk</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -70,74 +68,15 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-description','listing-image','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] }],
-      
-      searchColumns: ["listing-title","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Digital Garden – Omer Tzuk">
+<meta property="og:title" content="Welcome to the Garden – Omer Tzuk">
 <meta property="og:description" content="A space for ideas in progress, experiments, and evolving thoughts">
-<meta property="og:image" content="https://omertzuk.github.io/garden/consciousness/featured.png">
 <meta property="og:site_name" content="Omer Tzuk">
 </head>
 
-<body class="nav-sidebar floating nav-fixed quarto-light">
+<body class="nav-sidebar floating nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -169,10 +108,8 @@ window.Quarto = {
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-digital-garden">    
         <li>
     <a class="dropdown-item" href="./digital-garden.html">
- <span class="dropdown-text">Digital Garden</span></a>
+ <span class="dropdown-text">Welcome</span></a>
   </li>  
-        <li><hr class="dropdown-divider"></li>
-        <li class="dropdown-header">Topics</li>
         <li>
     <a class="dropdown-item" href="./garden/information-theory/index.html">
  <span class="dropdown-text">Information Theory</span></a>
@@ -221,14 +158,14 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./digital-garden.html">Digital Garden</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./digital-garden.html">Welcome</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="sidebar-menu-container"> 
@@ -236,64 +173,51 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./digital-garden.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Digital Garden</span></a>
+ <span class="menu-text">Welcome</span></a>
   </div>
 </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Topics</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./garden/information-theory/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Information Theory</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./garden/complex-systems/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Complex Systems</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./garden/consciousness/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Consciousness</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./garden/ecology/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ecology</span></a>
   </div>
 </li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Y29uc2Npb3VzbmVzcw==">consciousness <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZWNvbG9neQ==">ecology <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z3Jvd2luZw==">growing <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGF0dGVybnM=">patterns <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2VlZGxpbmc=">seedling <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGhlb3J5">theory <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content column-body" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Digital Garden</h1>
+<h1 class="title">Welcome to the Garden</h1>
 <p class="subtitle lead">A space for ideas in progress, experiments, and evolving thoughts</p>
 </div>
 
 
 
-<div class="quarto-title-meta column-body">
+<div class="quarto-title-meta">
 
     
   
@@ -305,116 +229,57 @@ window.Quarto = {
 </header>
 
 
-<section id="welcome-to-the-garden" class="level2">
-<h2 class="anchored" data-anchor-id="welcome-to-the-garden">Welcome to the Garden 🌱</h2>
-<p>This is my digital garden — a space between formal publications and fleeting notes. Unlike a blog with polished posts, this garden grows organically with:</p>
+<section id="what-is-a-digital-garden" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-a-digital-garden">What is a Digital Garden?</h2>
+<p>A digital garden is a different way of sharing knowledge online. Unlike blogs with polished, chronological posts, gardens are:</p>
 <ul>
-<li><strong>🌱 Seedlings</strong>: Early ideas, quick experiments, things I’m exploring</li>
-<li><strong>🌿 Growing</strong>: Developing thoughts, work in progress, evolving frameworks<br>
-</li>
-<li><strong>🌳 Evergreens</strong>: Mature ideas that continue to be refined and expanded</li>
+<li><strong>Evergreen</strong> — notes are continuously updated and refined</li>
+<li><strong>Non-linear</strong> — ideas connect through links, not just time</li>
+<li><strong>Work in progress</strong> — imperfection is welcomed, growth is expected</li>
+<li><strong>Exploratory</strong> — a space for thinking in public</li>
 </ul>
-<p>Content here includes:</p>
-<ul>
-<li>Jupyter notebooks exploring data, models, or concepts</li>
-<li>Notes on papers, books, and ideas</li>
-<li>Visualizations and interactive demos</li>
-<li>Technical experiments and code snippets</li>
-<li>Reflections connecting across domains</li>
-</ul>
-<p>Nothing here is “finished” — these ideas grow, change, and branch over time. Come back often to see what’s blooming.</p>
-<hr>
 </section>
-<section id="garden-contents" class="level2">
-<h2 class="anchored" data-anchor-id="garden-contents">Garden Contents</h2>
-<div id="listing-listing" class="quarto-listing quarto-listing-container-grid">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-      <option value="" disabled="" selected="" hidden="">Order By</option>
-      <option value="index" data-direction="asc">Default</option>
-      <option value="listing-date-sort" data-direction="asc">
-        Date - Oldest
-      </option>
-      <option value="listing-date-sort" data-direction="desc">
-        Date - Newest
-      </option>
-      <option value="listing-title" data-direction="asc">
-        Title
-      </option>
-    </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="Y29uc2Npb3VzbmVzcyUyQ3NlZWRsaW5nJTJDdGhlb3J5" data-listing-date-sort="1776114000000" data-listing-file-modified-sort="1776153046540" data-listing-date-modified-sort="1776153046000" data-listing-reading-time-sort="2" data-listing-word-count-sort="218">
-<a href="./garden/consciousness/predictive-processing.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./garden/consciousness/featured.png" class="thumbnail-image card-img" style="height: 200px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Predictive Processing &amp; Active Inference
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y29uc2Npb3VzbmVzcw=='); return false;">consciousness</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('c2VlZGxpbmc='); return false;">seedling</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dGhlb3J5'); return false;">theory</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Notes on the brain as a prediction machine</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Apr 14, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="ZWNvbG9neSUyQ2dyb3dpbmclMkNwYXR0ZXJucw==" data-listing-date-sort="1776114000000" data-listing-file-modified-sort="1776153046541" data-listing-date-modified-sort="1776153046000" data-listing-reading-time-sort="2" data-listing-word-count-sort="225">
-<a href="./garden/ecology/vegetation-patterns.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./garden/ecology/featured.png" class="thumbnail-image card-img" style="height: 200px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Vegetation Pattern Formation
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZWNvbG9neQ=='); return false;">ecology</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Z3Jvd2luZw=='); return false;">growing</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cGF0dGVybnM='); return false;">patterns</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>Self-organization in dryland ecosystems</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Apr 14, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
-
+<section id="growth-stages" class="level2">
+<h2 class="anchored" data-anchor-id="growth-stages">Growth Stages 🌱</h2>
+<p>I use a simple tagging system to indicate the maturity of each note:</p>
+<ul>
+<li><strong>Seedling</strong> 🌱: Fresh ideas, rough notes, early explorations</li>
+<li><strong>Growing</strong> 🌿: Developing thoughts, partially formed</li>
+<li><strong>Evergreen</strong> 🌳: Mature, refined, but still evolving</li>
+</ul>
+</section>
+<section id="what-youll-find-here" class="level2">
+<h2 class="anchored" data-anchor-id="what-youll-find-here">What You’ll Find Here</h2>
+<p>This garden is organized into four main topics, each exploring different aspects of my research and thinking:</p>
+<ul>
+<li><strong><a href="./garden/information-theory/index.html">Information Theory</a></strong>: Entropy, coding, information geometry, predictive processing</li>
+<li><strong><a href="./garden/complex-systems/index.html">Complex Systems</a></strong>: Self-organization, networks, emergence, nonlinear dynamics</li>
+<li><strong><a href="./garden/consciousness/index.html">Consciousness</a></strong>: Neuroscience, meditation, altered states, theories of mind</li>
+<li><strong><a href="./garden/ecology/index.html">Ecology</a></strong>: Dryland systems, eco-hydrology, climate, vegetation patterns</li>
+</ul>
+<p>Each topic contains:</p>
+<ul>
+<li><strong>Jupyter notebooks</strong> exploring data, models, and simulations</li>
+<li><strong>Notes</strong> on papers, books, and concepts</li>
+<li><strong>Experiments</strong> with code, visualizations, and demos</li>
+<li><strong>Connections</strong> linking ideas across domains</li>
+</ul>
+</section>
+<section id="philosophy" class="level2">
+<h2 class="anchored" data-anchor-id="philosophy">Philosophy</h2>
+<p>Nothing here is “finished” — these ideas grow, change, and branch over time. Come back often to see what’s blooming.</p>
+</section>
+<section id="inspiration" class="level2">
+<h2 class="anchored" data-anchor-id="inspiration">Inspiration</h2>
+<p>The digital garden movement draws from:</p>
+<ul>
+<li><a href="https://maggieappleton.com/garden-history">Maggie Appleton’s essay on garden history</a></li>
+<li>The concept of “learning in public”</li>
+<li>The Zettelkasten note-taking method</li>
+<li>Wiki culture and networked thought</li>
+</ul>
+<hr>
+<p><em>Use the sidebar menu to explore different topics, or browse all entries within each topic page.</em></p>
 
 
 </section>
