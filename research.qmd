@@ -8,60 +8,85 @@ listing:
     image-height: 300px
     field-links: [title]
     contents:
-        - title: "TableCanoniser: Interactive Grammar-Powered Transformation of Messy, Non-Relational Tables to Canonical Tables"
-          description: "CHI25 Honorable Mention awarded Full Paper"
-          author:
-            - "Kai Xiong"
-            - "Cynthia A. Huang"
-            - "YingCai Wu"
-            - "Michael Wybrow"
-          date: 2025-04-30
-          categories: [Full Paper, Talk]
-          image: research/images/chi25_tablecanoniser.png
-          path: https://doi.org/10.1145/3706598.3714321
-        - title: "PRITES: An integrative framework for investigating and assessing web-scraped datasets for research applications"
-          description: "Working paper"
-          author: "Cynthia A. Huang"
-          date: 2025-04-10
-          categories: [Working Paper]
-          image: research/images/Diagram_PRITES-framework.png
-          path: research/assets/PRITES-4b0c1a0.pdf
-        - title: "Visualising Category Recoding and Redistributions"
-          description: |
-            Working paper presented at [(Vis+Prov) x Domain](https://visxprov.github.io) 2023, a workshop at IEEE VIS 2023.
-          author: "Cynthia A. Huang"
-          date: 2023-10-23
-          categories: [Working Paper, Talk]
-          image: "research/images/viz-anzsco22-isco8-bigraph-table.png"
-          image-alt: |
-            A crossmap for converting values observed using Australian occupation categories (ANZSCO22) into observations under the International Standard Classification of Occupations (ISCO8). Crossmaps are directed multipartite graph structures for capturing details of cross-taxonomy transformation. This crossmap is visualised using a two-layer bigraph layout, with ANZSCO22 codes forming the first source layer, and ISCO8 codes the second target layer. The weights on the links indicate what share of ANZSCO22 observed values are redistributed to corresponding ISCO8 codes.
-          path: https://arxiv.org/abs/2308.06535v1
-          paper: "[arXiv:2308.06535v1](https://arxiv.org/abs/2308.06535v1)"
-          slides: "[vis-prov](https://cynthiahuang.quarto.pub/vis-prov/)"
-        - title: "Advances in Ex-Post Harmonisation using Graph Representations of Cross-Taxonomy Transformations"
-          description: |
-            Initially presented at [IDWSDS 2023](https://www.idwsds.org) for the PhD contest on Oct 10, 2023, and then at NUMBATS group seminar on Oct 12, 2023.
-          author: "Cynthia A. Huang"
-          date: 2023-10-12
-          categories: [Talk]
-          image: "research/images/ex-post-collect-clean-transform-merge.png"
-          path: https://cynthiahuang.quarto.pub/advances-expost-crossmap/
-          paper: "forthcoming"
-          slides: "[advances-expost-crossmap](https://cynthiahuang.quarto.pub/advances-expost-crossmap/)"
-        - title: "Crossmaps: A principled approach to ex-post data harmonisation and dataset integration"
-          description: |
-            Presented at the [Australian Statistics Conference (2023)](https://www.asc2023.org)
-          author: "Cynthia A. Huang"
-          date: 2023-12-11
-          categories: [Poster]
-          image: "research/images/asc-poster.png"
-          path: "research/assets/asc-poster.pdf"
-        - title: "Lasagne Recipes for Complex Data"
-          description: |
-            Slides and script for 2023 Three Minute Thesis (3MT) Competition at Monash University
-          author: "Cynthia A. Huang"
-          date: 2023-06-20
-          categories: [Talk]
-          image: "https://cynthiahqy.github.io/talk_3MT-2023/3MT-2023-lasagne-v03.png"
-          path: "https://cynthiahqy.github.io/talk_3MT-2023/"
+      - title: "Neurophysiological Markers of Existential Experience"
+        description: >
+          How does the brain process the awareness of mortality — and what happens 
+          when that processing shifts? At the Contemplative Neuroscience and 
+          Neurophenomenology Lab (University of Haifa, PI: Prof. Aviva 
+          Berkovich-Ohana), I analyze EEG time-series to extract neurophysiological 
+          markers of death anxiety and belief updating. The theoretical framework is 
+          predictive processing and active inference: beliefs are not discrete 
+          propositions but probability distributions encoded in a hierarchical 
+          generative model, and transformative experience involves a genuine 
+          reconfiguration of those priors. I use visual mismatch negativity (vMMN) 
+          paradigms and time-frequency decomposition to trace how the brain 
+          anticipates, violates, and updates its models of self and world.
+        categories: [Contemplative Neuroscience, EEG, Predictive Processing, Altered States]
+        image: ""
+        path: ""
+
+      - title: "Tree Responses to Climatic Variability: Eco-Hydrological Modeling"
+        description: >
+          How do trees respond to the interplay of soil moisture deficits and 
+          atmospheric drought — and what do long-term monitoring datasets reveal 
+          about adaptive capacity across decades of climate change? In Yair Mau's 
+          Eco-Hydrology Lab (Hebrew University of Jerusalem), I apply data science 
+          methods to Long-Term Ecological Research (LTER) datasets in Israel, 
+          building eco-hydrological models of tree growth, contraction, and recovery 
+          under climatic stress. The work connects empirical monitoring trajectories 
+          to mechanistic models of water uptake and carbon dynamics, asking not just 
+          what models predict but what observed tree communities actually reveal 
+          about resilience and vulnerability.
+        categories: [Eco-Hydrology, Complex Systems, Climate, Dryland Ecology]
+        image: ""
+        path: ""
+
+      - title: "Spatial Self-Organization and Resilience in Dryland Ecosystems"
+        description: >
+          Dryland vegetation does not distribute itself randomly — it self-organizes 
+          into spatial patterns (spots, stripes, gaps) that function as a collective 
+          buffer against aridity. My Ph.D. research at Ben-Gurion University (PI: 
+          Prof. Ehud Meron) used reaction-diffusion modeling, bifurcation analysis, 
+          and numerical continuation to study how these patterns form, what dynamical 
+          signatures precede ecosystem collapse, and how spatial organization shapes 
+          both short-term resilience and long-term evolutionary adaptation. A key 
+          finding: the same self-organized configurations that stabilize a community 
+          under stress can constrain its capacity to adapt when the environment 
+          changes faster than selection can respond.
+        categories: [Pattern Formation, Dryland Ecology, Nonlinear Dynamics, Complex Systems]
+        image: ""
+        path: ""
+
+      - title: "Spreading Phenomena on Complex Networks"
+        description: >
+          How does the topology of a social or biological network shape whether a 
+          perturbation cascades or gets absorbed? During my postdoctoral position at 
+          Tel Aviv University, I built large-scale hybrid epidemiological models to 
+          simulate disease spreading in structured populations, contributing to 
+          network-based analyses of epidemic propagation during the COVID-19 pandemic 
+          in Israel. A key insight from this work: in sociotechnical systems, behavior 
+          is not a fixed parameter but a dynamic variable that co-evolves with the 
+          system state — network topology shapes spread, but spread reshapes topology 
+          through behavioral adaptation.
+        categories: [Network Science, Epidemiology, Complex Systems, Computational Modeling]
+        image: ""
+        path: ""
+
+      - title: "Knowledge Graphs and LLM Agents for Complex Domains"
+        description: >
+          Between academic positions, I worked as a data scientist and R&D lead 
+          building knowledge graph systems and LLM-based agentic pipelines across 
+          domains including precision agriculture, psychophysiological health, and 
+          carbon sequestration. This industry experience deepened my interest in how 
+          structured knowledge representations can make AI systems more interpretable, 
+          grounded, and aligned with domain expertise — questions I now bring back 
+          into research contexts, including ongoing work on ecological knowledge 
+          graphs connecting long-term monitoring data to policy-relevant stakeholder 
+          decisions.
+        categories: [Knowledge Graphs, LLM Agents, Data Science, AI]
+        image: ""
+        path: ""
 ---
+
+:::{#research}
+:::

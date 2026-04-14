@@ -1,0 +1,33 @@
+---
+title: "Consciousness"
+listing:
+  contents: 
+    - "*.qmd"
+    - "*.ipynb"
+    - "!index.qmd"
+  sort: "date desc"
+  type: grid
+  grid-columns: 2
+  fields: [date, title, description, categories]
+  categories: true
+---
+
+## Consciousness
+
+Investigations into the nature of subjective experience, contemplative science, and the neuroscience of awareness.
+
+### Topics to explore:
+
+- Predictive processing and active inference
+- Altered states of consciousness
+- Contemplative neuroscience and meditation
+- Neurophenomenology and first-person methods
+- EEG markers of consciousness
+- Theories of consciousness (IIT, GWT, HOT, etc.)
+- Psychedelics and transformative experience
+- Death anxiety and existential awareness
+
+---
+
+::: {#listing}
+:::

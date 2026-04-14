@@ -1,0 +1,18 @@
+# options specified here will apply to all garden entries
+
+# default metadata
+author: "Omer Tzuk"
+image: featured.png
+card-style: "summary"
+date-modified: last-modified
+
+# freeze computational output
+freeze: true
+
+# garden page layout options
+format:
+  html:
+    toc: true
+    code-fold: false
+    code-tools: true
+title-block-banner: false

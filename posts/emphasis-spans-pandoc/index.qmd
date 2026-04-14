@@ -20,7 +20,7 @@ For example, while writing a paper about assessing the statistical quality of we
 
 Of course, when explained like this it seems straight forward to style these terms using the standard markdown syntax of `**boldface**` and `_italics_`. However, I often forgot or mixed up which style I was using for each case. I also ended up adding a **_third_** type of emphasis at some point: quotation marks for 'confusing terms'. These terms had some significant definitional conflict or ambiguity in usage between different disciplines that needed addressing.[^1]
 
-[^1]: reading over the paper again, it seems some other inconsistencies also escaped my notice... but that's a different Cynthia's problem.
+[^1]: reading over the paper again, it seems some other inconsistencies also escaped my notice... but that's a different Omer's problem.
 
 Long story short, it turns out a simple _"find and replace `**term**` with `_term_`"_ wasn't sufficient to achieve consistency across the paper. But my brain also couldn't just ignore it... Luckily, I knew just enough about pandoc and quarto extensions that I thought _"pandoc bracketed spans and lua filters can probably solve this!"._
 

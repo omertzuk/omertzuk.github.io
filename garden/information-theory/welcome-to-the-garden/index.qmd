@@ -1,0 +1,45 @@
+---
+title: "Welcome to the Garden"
+description: "A note about digital gardens and how this space will grow"
+date: "2026-04-14"
+categories: [information-theory, meta, seedling]
+---
+
+## What is a Digital Garden?
+
+A digital garden is a different way of sharing knowledge online. Unlike blogs with polished, chronological posts, gardens are:
+
+- **Evergreen** — notes are continuously updated and refined
+- **Non-linear** — ideas connect through links, not just time
+- **Work in progress** — imperfection is welcomed, growth is expected
+- **Exploratory** — a space for thinking in public
+
+## Growth Stages 🌱
+
+I use a simple tagging system to indicate the maturity of each note:
+
+- **Seedling** 🌱: Fresh ideas, rough notes, early explorations
+- **Growing** 🌿: Developing thoughts, partially formed
+- **Evergreen** 🌳: Mature, refined, but still evolving
+
+## What You'll Find Here
+
+This garden will include:
+
+- **Notebooks**: Jupyter notebooks exploring data, models, and simulations
+- **Notes**: Reflections on papers, books, concepts
+- **Experiments**: Code, visualizations, technical demos
+- **Connections**: Ideas linking consciousness, complexity, ecology, technology
+
+## Inspiration
+
+The digital garden movement draws from:
+
+- [Maggie Appleton's essay on garden history](https://maggieappleton.com/garden-history)
+- The concept of "learning in public"
+- The Zettelkasten note-taking method
+- Wiki culture and networked thought
+
+---
+
+*This is a seedling 🌱 — it will grow and change as the garden develops.*

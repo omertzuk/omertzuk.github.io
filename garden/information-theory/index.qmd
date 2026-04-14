@@ -1,0 +1,31 @@
+---
+title: "Information Theory"
+listing:
+  contents: 
+    - "*.qmd"
+    - "*.ipynb"
+    - "!index.qmd"
+  sort: "date desc"
+  type: grid
+  grid-columns: 2
+  fields: [date, title, description, categories]
+  categories: true
+---
+
+## Information Theory
+
+Notes, explorations, and experiments related to information theory, entropy, coding, and the mathematics of communication and knowledge.
+
+### Topics to explore:
+
+- Shannon entropy and mutual information
+- Information geometry
+- Predictive coding and the Free Energy Principle
+- Information flow in complex systems
+- Compression and representation learning
+- Information-theoretic approaches to consciousness
+
+---
+
+::: {#listing}
+:::

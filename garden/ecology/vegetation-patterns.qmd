@@ -1,0 +1,53 @@
+---
+title: "Vegetation Pattern Formation"
+description: "Self-organization in dryland ecosystems"
+date: "2026-04-14"
+categories: [ecology, growing, patterns]
+image: featured.png
+---
+
+## Spatial Self-Organization in Drylands
+
+Vegetation in water-limited ecosystems doesn't distribute randomly — it self-organizes into regular spatial patterns that emerge from local interactions between plants and water.
+
+### Pattern Types
+
+**Spots**: Isolated vegetation patches on bare ground (common in very arid regions)
+
+**Stripes**: Alternating bands of vegetation and bare soil running perpendicular to slopes (intermediate aridity)
+
+**Gaps**: Bare soil gaps within otherwise continuous vegetation cover (less arid)
+
+### Mechanisms
+
+The patterns emerge from a **positive feedback** between biomass and water:
+
+1. Plants increase local infiltration (roots, soil structure, shading)
+2. More water → more plant growth
+3. But plants also compete for water with neighbors
+4. This creates **scale-dependent feedback**: facilitation at short range, competition at long range
+
+This is mathematically analogous to Turing patterns — the same mechanism that creates animal coat patterns or chemical reaction-diffusion patterns.
+
+### Why It Matters
+
+**Ecosystem Function**: Patterns concentrate resources, maintaining higher biomass than uniform vegetation would under the same rainfall
+
+**Early Warning**: Pattern changes (spot → stripe → gap → bare soil) can indicate proximity to desertification tipping points
+
+**Management**: Understanding pattern dynamics informs restoration strategies and climate adaptation
+
+### My Work
+
+During my Ph.D., I studied:
+
+- How seasonal rainfall variability affects pattern stability
+- The role of spatial patterns in buffering climate stress
+- Design principles for agroforestry systems based on natural patterns
+- Front instabilities that could potentially reverse desertification
+
+See the [Publications](../../publications.qmd) page for papers on this work.
+
+---
+
+*Status: Growing 🌿 — Core ideas established, could add visualizations and simulations*

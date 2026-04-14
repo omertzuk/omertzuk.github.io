@@ -1,6 +1,6 @@
 ---
 title: "Teaching Markdown"
-author: "Cynthia Huang"
+author: "Omer Tzuk"
 draft: true
 categories:
   - teaching

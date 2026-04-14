@@ -49,7 +49,7 @@ format:
   html:
     toc: true
   pdf:
-    author: Cynthia A Huang
+    author: Omer Tzuk
     pdf-engine: weasyprint
 css: cv.css
 format-links: [pdf]

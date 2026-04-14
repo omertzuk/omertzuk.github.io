@@ -1,0 +1,11 @@
+---
+title: "Publications"
+bibliography: research/assets/OTzuk_publications.bibtex
+csl: https://www.zotero.org/styles/apa
+nocite: '@*'
+---
+
+## Peer-Reviewed Publications
+
+::: {#refs}
+:::

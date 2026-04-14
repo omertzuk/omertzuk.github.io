@@ -1,0 +1,32 @@
+---
+title: "Complex Systems"
+listing:
+  contents: 
+    - "*.qmd"
+    - "*.ipynb"
+    - "!index.qmd"
+  sort: "date desc"
+  type: grid
+  grid-columns: 2
+  fields: [date, title, description, categories]
+  categories: true
+---
+
+## Complex Systems
+
+Explorations of emergence, self-organization, networks, and the dynamics of interconnected systems.
+
+### Topics to explore:
+
+- Pattern formation and self-organization
+- Network theory and graph dynamics
+- Bifurcations and critical transitions
+- Agent-based modeling
+- Chaos and nonlinear dynamics
+- Scale-free phenomena and power laws
+- Resilience and tipping points
+
+---
+
+::: {#listing}
+:::

@@ -3,133 +3,149 @@ title: "Curriculum Vitae"
 format:
   html:
     toc: true
-  pdf:
-    author: Cynthia A Huang
-    pdf-engine: weasyprint
-css: cv.css
-format-links: [pdf]
 ---
 
-::: {.print-only .contact-block}
-cynthia.huang@monash.edu
-:::
+# Omer Tzuk, Ph.D.
+**Physicist | Data Scientist | Researcher**
 
-::: {.no-print}
-_Last updated May 1, 2024_
-:::
+**Contact Information**
 
-## EDUCATION
+* **LinkedIn:** [linkedin.com/in/omer-tzuk/](https://www.linkedin.com/in/omer-tzuk/)
 
-**Doctor of Philosophy -- Econometrics and Business Statistics** <br> *Monash University* [*Aug 2021 --- Aug 2025]{.cvdate}
 
--   Principles and methods for complex data preparation and integration, with applications to official statistics, web-scrapped data and satellite raster images
--   Monash Data Futures Institute PhD Top-Up Scholarship (2021-2024)
--   Statistical Society of Australia Top-Up Scholarship (2023)
+---
 
-**Bachelor of Commerce (Honours) -- Economics**<br> *The University of Melbourne* [*Feb 2016 --- Nov 2016*]{.cvdate}
+## Summary
+Ph.D. in Physics of Complex Systems with expertise in developing algorithms for numerical analysis and mathematical modeling of physical systems. Over 12 years of experience in Python, data science, and machine learning, with a specialized focus on complex networks, knowledge graphs, and machine learning on graphs. Additional experience with retrieval augmented generation, large language models, and transformers. Currently conducting EEG research on consciousness and predictive processing.
 
--   Graduated with First Class Honours
--   Completed research essay modelling information escrows for victims of domestic violence
+---
 
-**Bachelor of Commerce -- Economics & Management** <br> *The University of Melbourne* [*Mar 2012 --- Oct 2014*]{.cvdate}
+## Education
 
--   Graduated with First Class Honours, and inclusion on Dean's Honours List
+**Ph.D. in Physics of Complex Systems** | 2014 – 2019
+*Ben-Gurion University of the Negev, Israel*
 
-**Summer School: EC307 Development Economics** <br> *London School of Economics* [*Jul 2014 --- Aug 2014*]{.cvdate}
+* **Research:** Dynamics of spatial pattern formation in complex systems.
+* **Key Contributions:** Developed algorithms for multidimensional stability analysis and numerical continuation; built Python codes for mathematical modeling and network-based population structure inference.
 
--   Final Result: A
+**M.Sc. in Astrophysics** | 2012 – 2014
+*University of Amsterdam, The Netherlands*
 
-**Victorian Certificate of Education** <br> *The Mac.Robertson Girls' High School* [*Feb 2009 --- Nov 2011*]{.cvdate}
+* **Track:** Gravitation and Astro-particle Physics excellence track.
+* **Key Contributions:** Wrote Python algorithms for Bayesian inference and Markov chain Monte Carlo (MCMC) methods regarding dark matter interactions in the early universe.
 
--   Australian Tertiary Admission Rank (ATAR): 98.95
+**B.Sc. in Astronomy and Astrophysics** | 2008 – 2011
+*University of Bologna, Italy*
 
-## WORK EXPERIENCE{style="page-break-before: always"}
+* Graduated with honors (con lode).
 
-### Data Scientist
+---
 
-***Freelance, Multiple Clients*** [Jan 2020 -- June 2021]{.cvdate}
+## Professional Experience
 
-Providing data collection, pre-processing, exploratory analysis and modelling services to clients in the early R&D stages of developing data driven products. Projects include:
+**Postdoctoral Researcher** | Oct 2025 – Present
+*University of Haifa*
 
--   Data description and preliminary product feasibility insights for a start-up real estate bond platform; including assessing suitability of various property transaction databases for use in initial product prototype.
--   Development of statistical anomaly detection regimes and key historical insights from internet quality time-series data for use in parametric insurance products, including documenting analysis tools in an R package.
+* Researcher at the Contemplative Neuroscience and Neurophenomenology Lab.
+* Conducting EEG data collection and analysis for studies on anxiety, altered states of consciousness, and predictive processing.
+* Named collaborator on NIH grant application.
 
-### Research Assistant
+**LLM Engineer & Graph RAG Systems Architect** | Dec 2024 – Sep 2025
+*BetterYou*
 
-***Monash Addiction Research Center, Monash University*** [March 2023 -- Present]{.cvdate} <br> ***Dept. of Economics, Monash University*** [Nov 2019 -- Jul 2023]{.cvdate} <br> ***SoDa Laboratories, Monash University*** [Jul 2019 -- Dec 2022]{.cvdate} <br> ***Dept. of Econometrics and Business Statistics, Monash University*** [Oct 2020 -- Dec 2020]{.cvdate} <br> ***Dept. of Economics, University of Melbourne*** [Mar 2017 -- Dec 2018]{.cvdate}
+* Led R&D of knowledge graphs and graph machine learning for a psychophysiological AI assistant.
 
-Supporting multiple projects with dataset design, data collection and pre-processing, exploratory visualisation, and preliminary analysis tasks. Project supervisors included:
+**Researcher** | Jul 2024 – Oct 2024
+*LAMBDA Lab, Tel Aviv University*
 
--   Monash University: Assoc. Prof. Nathaniel Lane (Uni. of Oxford), Prof. Paul Raschky, Assoc. Prof. Laura Puzzello, Assoc. Prof. Simon Angus, Dr. Patricia Menendez and Dr. Klaus Ackermann.
--   University of Melbourne: Prof. David Byrne and Prof. Phillip McCalman.
+* Optimized Retrieval Augmented Generation (RAG) pipelines from Knowledge Graphs in collaboration with Alpha10X.
 
-*Key skills and achievements include:*
+**VP R&D** | 2022 – Mar 2024
+*We-Agri Ltd.*
 
--   Processing archival microfiche and web-scraped data to construct chronological record of US spectrum license trading, including selecting harmonised variables and coordinating data entry by other team members.
--   Sourcing archival magazines to collect produce and price information for the Laser Printer market from 1984 onwards
--   Sourcing data online from Wikimedia, UNIDO, FedScope and DHS Program databases, including construction of SPARQL and REST API queries, writing reproducible web scraping and/or file download scripts
--   Pre-processing of data including parsing XML data into tabular form, writing scripts and managing local resource usage for accessing big data archives such as Wikipedia dumps
--   Merging multiple data releases into a single consistent panel including preparing and applying concordance tables to harmonise between ISIC (International Standard Industrial Classifications of All Economic Activities) revisions
--   Reshaping data tables and pre-selection of key variables from DHS (Demographic and Health Survey) data for use with machine learning approaches
--   Preparation of data summaries and visualisations highlighting key dataset features and preliminary exploratory insights and analysis
+* Developed a carbon sequestration platform using LLMs and Knowledge Graphs.
+* Built geochemical simulation models in Python for soil organic carbon dynamics.
 
-### Academic Tutor
+**Researcher** | 2022 – Jul 2022
+*DAOstack Ltd.*
 
-***Dept. of Econometrics and Business Statistics, Monash University*** [Mar 2020 -- Dec 2023]{.cvdate} <br> ***Faculty of Business and Economics, University of Melbourne*** [Jul 2016 -- Nov 2019]{.cvdate}
+* Developed smart contracts for on-chain parametric insurance products using Solidity on Ethereum.
 
-Preparing and delivering in-person and online tutorials and workshops for undergraduate and masters students. Subject areas taught include:
+**Postdoctoral Researcher** | 2019 – 2020
+*Tel-Aviv University*
 
--   Data collection and wrangling, Open Data principles, Data Analysis in R
--   Microeconomics, Macroeconomics, Game Theory, Computational Economics in SAS and MATLAB
--   Quantitative Methods, Business Analytics, and Business Case Analysis
+* Built Python code to simulate large-scale hybrid epidemiological models on networks.
 
-Additional support provided beyond the standard teaching responsibilities included:
+**Research Assistant** | 2013
+*CERN, Geneva, Switzerland*
 
--   Creating supplementary resources to support students at various levels
--   Providing feedback on assignment and overall subject design as an experienced tutor
--   Preparing and delivering subject review lectures
--   Designing marking guides, and ensuring consistency across all markers
+* Developed a Bayesian inference tool in C++ (ROOT) for big data at the LHCb experiment.
 
-### Analyst
+---
 
-***Australian Competition and Consumer Commission (Intern)*** [*Jan 2017 -- Feb 2017*]{.cvdate}
+## Publications
 
-Assisted in research, analysis and drafting tasks for study of competition and consumer issues in the Australian communications sector. Contributions included:
+* **Can Spatial Self-Organization Inhibit Evolutionary Adaptation?** (2025)
+    Bera, B. K., Tzuk, O., Bennett, J. J. R., et al. *Journal of The Royal Society Interface*, 22(222). [DOI](https://doi.org/10.1098/rsif.2024.0454)
+* **Dryland Mechanisms Could Widely Control Ecosystem Functioning in a Drier and Warmer World** (2022)
+    Grünzweig, J. M., et al. *Nat Ecol Evol*, 6(8), 1064–1076. [DOI](https://doi.org/10.1038/s41559-022-01779-y)
+* **Linking Spatial Self-Organization to Community Assembly and Biodiversity** (2021)
+    Bera, B. K., Tzuk, O., Bennett, J. J., and Meron, E. *eLife*, 10. [DOI](https://doi.org/10.7554/eLife.73819)
+* **The Role of Spatial Self-Organization in the Design of Agroforestry Systems** (2020)
+    Tzuk, O., Uecker, H., and Meron, E. *PLOS ONE*, 15(7). [DOI](https://doi.org/10.1371/journal.pone.0236325)
+* **Period Doubling as an Indicator for Ecosystem Sensitivity to Climate Extremes** (2019)
+    Tzuk, O., et al. *Scientific Reports*, 9(1), 19577. [DOI](https://doi.org/10.1038/s41598-019-56080-z)
+* **Interplay between Exogenous and Endogenous Factors in Seasonal Vegetation Oscillations** (2019)
+    Tzuk, O., et al. *Scientific Reports*, 9(1), 354. [DOI](https://doi.org/10.1038/s41598-018-36898-9)
+* **Front Instabilities Can Reverse Desertification** (2019)
+    Fernandez-Oto, C., Tzuk, O., and Meron, E. *Phys. Rev. Lett.*, 122(4). [DOI](https://doi.org/10.1103/PhysRevLett.122.048101)
+* **Continuum Modeling of Discrete Plant Communities** (2019)
+    Meron, E., et al. *Mathematics*, 7(10). [DOI](https://doi.org/10.3390/math7100987)
+* **Wavelength Selection beyond Turing** (2017)
+    Zelnik, Y. R. and Tzuk, O. *Eur. Phys. J. Spec. Top.*, 226(9). [DOI](https://doi.org/10.1140/epjst/e2017-70034-x)
+* **Discovery of Fairy Circles in Australia Supports Self-Organization Theory** (2016)
+    Getzin, S., et al. *Proc Natl Acad Sci USA*, 113(13). [DOI](https://doi.org/10.1073/pnas.1522130113)
 
--   Researching and drafting a framework for synthesising vertical and horizontal competition issues
--   Preparing supporting visuals including graphs and flowcharts
--   Attended regular training sessions on all aspects of ACCC work
+---
 
-***Grant Thornton Thailand*** [Feb 2015 -- Feb 2016]{.cvdate} <br> ***Grant Thornton Thailand (Intern)*** [Sep 2014 -- Dec 2014]{.cvdate}
+## Teaching Experience
 
-Worked collaboratively to deliver work in Corporate Finance, Forensic Investigations, and Business Strategy Planning. Project geographies included Thailand, Myanmar, and China. Industries included infrastructure, natural resources and financial services. Research skills such as market research, needs analysis, and strategy recommendations were used to deliver projects such as:
+* **Lecturer** | 2020 – Oct 2024
+    *Tel-Aviv University and Afeka College of Engineering*
+    Operations research, stochastic processes, data mining, ML, and business analytics.
+* **Lecturer** | 2019 – Present
+    *Open University, Israel*
+    Physics courses and introduction to astronomy.
+* **Teaching Assistant** | 2014 – 2019
+    *Ben-Gurion University of the Negev*
+    Mathematical Methods, Quantum Physics, and fundamental physics.
 
--   Digital marketing strategy and implementation plan including identification of key platforms, competitor and industry analysis, target client activity, resourcing, and risk analysis.
--   People and Culture Review including recommendations on intranet design, staff engagement, and internal communication tools and policy.
+---
 
-::: {.no-print}
-## PRESENTATIONS AND WORKSHOPS
+## Community Leadership
 
-```{r echo=FALSE}
-other_exp <- tibble::tribble(
-  ~type, ~title, ~date, ~host, ~link,
-  "Talk", "Misadventures with Reproducibility in R", 20221130, "R Ladies Melbourne Meetup", "https://github.com/cynthiahqy/rladies-2022-11",
-  "Talk", "Quarto Websites as Research Compendiums", 20220816, "Monash EBS Data Science Research Software Study Group", "https://github.com/cynthiahqy/quarto-wiki-template",
-  "Talk", "Designing R Packages", 20221004, "Monash EBS Data Science Research Software Study Group", "https://github.com/cynthiahqy/design-r-magic_2022-10",
-  "Workshop", "Writing academic papers with Rmarkdown and friends", 20220909, "Dept. of Economics, Monash University", "https://www.cynthiahqy.com/posts/r-markdown-and-friends/"
-)
-```
+* **Co-Founder & Chair** | 2023 – Present
+    *Spirit Tech Hub Israel*
+    Convening stakeholders around technologies for mental well-being and contemplative science.
+* **Co-Founder & Chief Editor** | 2014 – 2019
+    *humanist.co.il*
+    An online magazine and community hub for the secular humanist community in Israel.
 
--   Talk: [Silver linings: how a harmonisation mishap turned into a PhD thesis](https://datamishapsnight.com) (7 Mar 2024, Data Mishaps Night)
--   Workshop: [Meeting AEA Replication Standards using Quarto](https://github.com/cynthiahqy/monash-quarto-aea) (18-20 Aug 2023, Monash University)
--   Talk: [Misadventures with Reproducibility in R](https://github.com/cynthiahqy/rladies-2022-11) (30 Nov 2022, R Ladies Melbourne Meetup)
--   Talk: [Designing R Packages](https://github.com/cynthiahqy/design-r-magic_2022-10) (4 Oct 2022, Monash EBS Data Science Research Software Study Group)
--   Talk: [Quarto Websites as Research Compendiums](https://github.com/cynthiahqy/quarto-wiki-template) (16 Aug 2022, Monash EBS Data Science Research Software Study Group)
--   Workshop: [Writing academic papers with Rmarkdown and friends](https://www.cynthiahqy.com/posts/r-markdown-and-friends/) (9 Aug 2022, Monash University)
+---
 
-:::
+## Continuing Education
 
-::: {.print-only}
-## References
-Available upon request
-:::
+* **Blue Sky Leaders Certificate Program** | 2026
+    *California Institute of Integral Studies (CIIS)*
+    Conscious Leadership, systems thinking, and regenerative design.
+* **Facilitators of Dialogue Training Course** | 2025
+    *The School for Peace (SFP)*
+    Training in facilitation of Jewish-Arab dialogue and conflict transformation.
+
+---
+
+## Skills
+
+* **Core:** Algorithm development, numerical analysis, mathematical modeling, data science, complex networks, graph ML, graph databases, EEG pipelines.
+* **Software:** Python, MATLAB, Pandas, Scikit-learn, TensorFlow, PyTorch, Neo4j, MNE-Python, EEGLAB.
+* **Languages:** Hebrew (Native), English (Fluent), Italian (Fluent).

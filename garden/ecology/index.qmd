@@ -1,0 +1,33 @@
+---
+title: "Ecology"
+listing:
+  contents: 
+    - "*.qmd"
+    - "*.ipynb"
+    - "!index.qmd"
+  sort: "date desc"
+  type: grid
+  grid-columns: 2
+  fields: [date, title, description, categories]
+  categories: true
+---
+
+## Ecology
+
+Work on dryland ecosystems, eco-hydrology, climate resilience, and the dynamics of vegetation and water.
+
+### Topics to explore:
+
+- Dryland vegetation patterns
+- Eco-hydrological modeling
+- Climate change and ecosystem resilience
+- Spatial self-organization in nature
+- Tree responses to drought
+- Soil-water-plant dynamics
+- Agroforestry systems
+- Ecosystem tipping points
+
+---
+
+::: {#listing}
+:::

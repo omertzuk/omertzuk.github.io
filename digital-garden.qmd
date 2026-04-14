@@ -1,0 +1,43 @@
+---
+title: "Digital Garden"
+subtitle: "A space for ideas in progress, experiments, and evolving thoughts"
+listing:
+  contents: 
+    - garden/*/*.qmd
+    - garden/*/*.ipynb
+    - "!garden/*/index.qmd"
+  sort: "date desc"
+  type: grid
+  grid-columns: 3
+  fields: [date, title, description, image, categories]
+  categories: true
+  sort-ui: [date, title]
+  filter-ui: [title, description, categories]
+  image-height: 200px
+page-layout: full
+---
+
+## Welcome to the Garden 🌱
+
+This is my digital garden — a space between formal publications and fleeting notes. Unlike a blog with polished posts, this garden grows organically with:
+
+- **🌱 Seedlings**: Early ideas, quick experiments, things I'm exploring
+- **🌿 Growing**: Developing thoughts, work in progress, evolving frameworks  
+- **🌳 Evergreens**: Mature ideas that continue to be refined and expanded
+
+Content here includes:
+
+- Jupyter notebooks exploring data, models, or concepts
+- Notes on papers, books, and ideas
+- Visualizations and interactive demos
+- Technical experiments and code snippets
+- Reflections connecting across domains
+
+Nothing here is "finished" — these ideas grow, change, and branch over time. Come back often to see what's blooming.
+
+---
+
+## Garden Contents
+
+::: {#listing}
+:::

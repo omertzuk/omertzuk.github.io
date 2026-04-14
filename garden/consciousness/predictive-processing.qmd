@@ -1,0 +1,44 @@
+---
+title: "Predictive Processing & Active Inference"
+description: "Notes on the brain as a prediction machine"
+date: "2026-04-14"
+categories: [consciousness, seedling, theory]
+---
+
+## The Predictive Brain
+
+The predictive processing framework suggests that perception is not passive reception of sensory data, but active prediction and error correction.
+
+### Key Ideas
+
+**Prediction Errors**: The brain constantly generates predictions about incoming sensory data. What we consciously experience may be the residual — the prediction error — rather than the raw sensory input itself.
+
+**Hierarchical Structure**: Predictions flow top-down through a cortical hierarchy, while prediction errors flow bottom-up. Higher levels encode more abstract, temporally extended predictions.
+
+**Active Inference**: We don't just predict the world — we act on it to make our predictions come true. Action is prediction error minimization by changing the world rather than updating beliefs.
+
+### Connection to Consciousness
+
+If consciousness is related to prediction error, then:
+
+- **Meditative states** might involve reducing prediction error through attentional control
+- **Psychedelic states** might involve relaxed high-level priors, allowing unexpected prediction errors to propagate
+- **Anxiety** might involve persistently high prediction error in interoceptive (body-sensing) pathways
+
+### Research Questions
+
+- Can we measure prediction error in EEG?
+- How do contemplative practices change prediction dynamics?
+- What happens to prediction hierarchies in altered states?
+
+---
+
+## References
+
+- Clark, A. (2013). *Whatever next? Predictive brains, situated agents, and the future of cognitive science.*
+- Friston, K. (2010). *The free-energy principle: a unified brain theory?*
+- Lutz & Thompson (2003). *Neurophenomenology: Integrating subjective experience and brain dynamics*
+
+---
+
+*Status: Seedling 🌱 — Initial notes, needs expansion and integration*

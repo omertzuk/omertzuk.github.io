@@ -1,27 +1,31 @@
 ---
 title: "About"
-image: profile.jpg
+image: gallery/Omer_profile_photo.png
 card-style: "summary"
 about:
   template: jolla
   links:
-    - icon: twitter
-      text: Twitter
-      href: https://twitter.com/cynthiahqy
     - icon: linkedin
       text: LinkedIn
-      href: https://linkedin.com/cynthiahqy
+      href: https://www.linkedin.com/in/omer-tzuk/
     - icon: github
       text: Github
-      href: https://github.com/cynthiahqy
-    - icon: envelope-at-fill
-      text: Email
-      href: mailto:cynthia.huang@monash.edu
+      href: https://github.com/omertzuk
 ---
 
-🧙‍♀️ I am an interdisciplinary researcher with pronouns she/her. I work at the intersection of social data science, statistical programming and human-centered computing, with a particular focus on data quality, provenance and visualisation in data science workflows. Currently, I am a Postdoctoral Researcher in the [Social Data Science and AI Lab at LMU Munich](https://www.stat.lmu.de/soda/en/), working with [Frauke Kreuter](https://www.stat.lmu.de/soda/en/team/contact-page/frauke-kreuter-825909f7.html). I completed my PhD in the Department of Econometrics and Business Statistics at Monash University under the supervision of [Rob J Hyndman](https://robjhyndman.com), [Simon Angus](https://research.monash.edu/en/persons/simon-angus), and [Sarah Goodwin](https://research.monash.edu/en/persons/sarah-goodwin).
+I am a physicist and complex-systems researcher currently expanding my work into consciousness science. I completed my B.Sc. in Astronomy & Astrophysics at the University of Bologna, followed by an M.Sc. in Gravitation and Astroparticle Physics (GRAPPA) at the University of Amsterdam.
 
-Check out my [now page](now.qmd) for semi-frequent updates on what I'm working on and thinking about. My favourite side hats at the moment are co-host of the [Random Sample](https://www.therandomsample.com.au/) podcast, and [Quarto](https://quarto.org) evangelist and tinkerer.
+I then moved into the physics of complex systems at Ben-Gurion University, where my Ph.D. focused on pattern formation and eco-hydrological dynamics in semi-arid ecosystems — studying how dryland vegetation self-organizes as a buffer against aridity and climate stress. Afterward, I worked on spreading phenomena on complex networks during a postdoctoral position at Tel Aviv University.
+
+In between, I spent several years in industry as a data scientist, building knowledge graph systems and LLM-based agents across domains ranging from precision agriculture to psychophysiological health.
+
+My current research moves between environmental complex systems and contemplative neuroscience. I am a postdoctoral fellow at the Contemplative Neuroscience and Neurophenomenology Lab at the University of Haifa, where I study EEG time-series, predictive processing, and altered states of consciousness. In parallel, I hold a postdoctoral position in Yair Mau's Eco-Hydrology Lab at the Hebrew University of Jerusalem.
+
+Outside the lab, I co-founded [Spirit Tech Hub Israel](https://spirit-tech-hub-il.netlify.app/), a community connecting researchers, developers, and entrepreneurs working at the intersection of technology, consciousness, and human flourishing.
+
+Across these fields, my interest remains constant: understanding how complex systems — ecological, cognitive, and social — self-organize, adapt, and transform.
+
+<!-- Check out my [now page](now.qmd) for semi-frequent updates on what I'm working on and thinking about. -->
 
 
 <!-- 🤹🏻This blog is a seed nursery for holding ideas, thoughts and projects I'm juggling while I build my [digital garden](https://maggieappleton.com/garden-history). Expect anything from machine learning, data wrangling, reproducible workflows, teaching pedagogy to half-formed opinions on social issues, personal data-viz, and winding journeys through my special interests of the moment. -->

@@ -10,30 +10,26 @@ execute:
   freeze: true
 
 website:
-  title: "Cynthia Huang"
-  site-url: https://www.cynthiahqy.com
-  description: "Cynthia Huang's Website"
+  title: "Omer Tzuk"
+  site-url: https://omertzuk.github.io/
+  description: "Omer Tzuk's Website"
   open-graph: true
-  twitter-card:
-    creator: "@cynthiahqy"
 
-  repo-url: https://github.com/cynthiahqy/digital-garden
+  repo-url: https://github.com/omertzuk/omertzuk.github.io
   repo-actions: [edit, issue]
 
   navbar:
     right:
-      - now.qmd
-      - blog.qmd
-      - sidebar:gallery
       - research.qmd
-      - text: Talks
-        href: https://talks.cynthiahqy.com
+      - text: Publications
+        href: publications.qmd
+      - sidebar:garden
       - text: CV
         href: CV.qmd
       - icon: github
-        href: https://github.com/cynthiahqy
+        href: https://github.com/omertzuk
       - icon: linkedin
-        href: https://www.linkedin.com/in/cynthiahqy/
+        href: https://www.linkedin.com/in/omertzuk/
       # - icon: twitter
       #   href: https://twitter.com/cynthiahqy
       # - icon: envelope-at-fill
@@ -48,9 +44,20 @@ website:
         - gallery.qmd
         - gallery/sketchbook/index.qmd
         - gallery/podcasts.qmd
+    
+    - id: garden
+      title: "Digital Garden"
+      contents:
+        - digital-garden.qmd
+        - section: "Topics"
+          contents:
+            - garden/information-theory/index.qmd
+            - garden/complex-systems/index.qmd
+            - garden/consciousness/index.qmd
+            - garden/ecology/index.qmd
 
   page-footer:
-    right: "This website is built with ❤️  and [Quarto](https://quarto.org/), by Cynthia Huang. License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)."
+    right: "This website is built with ❤️  and [Quarto](https://quarto.org/), by Omer Tzuk. License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)."
 
 format:
   html:
