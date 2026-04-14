@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Omer Tzuk">
+<meta name="dcterms.date" content="2026-04-14">
+<meta name="description" content="The closest thing to a mystery-thriller that I’ve experienced in the ggplot2 ecosystem">
+
+<title>Visualising data recoding as Bipartite Graphs using igraph, tidygraph, ggraph and ggplot2 – Omer Tzuk</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-a1c87f40015067c62c82f3c4ff3d1ad4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Visualising data recoding as Bipartite Graphs using igraph, tidygraph, ggraph and ggplot2 – Omer Tzuk">
+<meta property="og:description" content="The closest thing to a mystery-thriller that I’ve experienced in the ggplot2 ecosystem">
+<meta property="og:image" content="https://omertzuk.github.io/posts/xmap-ggraph-bipartite/featured.png">
+<meta property="og:site_name" content="Omer Tzuk">
+<meta property="og:image:height" content="800">
+<meta property="og:image:width" content="1096">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Omer Tzuk</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../publications.html"> 
+<span class="menu-text">Publications</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-digital-garden" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Digital Garden</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-digital-garden">    
+        <li>
+    <a class="dropdown-item" href="../../digital-garden.html">
+ <span class="dropdown-text">Digital Garden</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Topics</li>
+        <li>
+    <a class="dropdown-item" href="../../garden/information-theory/index.html">
+ <span class="dropdown-text">Information Theory</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../garden/complex-systems/index.html">
+ <span class="dropdown-text">Complex Systems</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../garden/consciousness/index.html">
+ <span class="dropdown-text">Consciousness</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../garden/ecology/index.html">
+ <span class="dropdown-text">Ecology</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../CV.html"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/omertzuk"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/omertzuk/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../blog.xml"> <i class="bi bi-rss" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Visualising data recoding as Bipartite Graphs using igraph, tidygraph, ggraph and ggplot2</h1>
+                  <div>
+        <div class="description">
+          The closest thing to a mystery-thriller that I’ve experienced in the ggplot2 ecosystem
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">data-viz</div>
+                <div class="quarto-category">how-to</div>
+                <div class="quarto-category">ggplot2</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Omer Tzuk </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">April 14, 2026</p>
+      </div>
+    </div>
+    
+      <div>
+      <div class="quarto-title-meta-heading">Modified</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">April 14, 2026</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#bipartite-graphs-what-and-why" id="toc-bipartite-graphs-what-and-why" class="nav-link active" data-scroll-target="#bipartite-graphs-what-and-why">Bipartite Graphs? What and why?</a></li>
+  <li><a href="#show-me-the-plots" id="toc-show-me-the-plots" class="nav-link" data-scroll-target="#show-me-the-plots">Show me the plots!</a>
+  <ul class="collapse">
+  <li><a href="#a-crossmap-is-a-bipartite-graph-isnt-it" id="toc-a-crossmap-is-a-bipartite-graph-isnt-it" class="nav-link" data-scroll-target="#a-crossmap-is-a-bipartite-graph-isnt-it">A Crossmap is a Bipartite Graph, isn’t it?</a></li>
+  <li><a href="#bipartite-graphs-are-a-special-type-of-graph-maybe-too-special." id="toc-bipartite-graphs-are-a-special-type-of-graph-maybe-too-special." class="nav-link" data-scroll-target="#bipartite-graphs-are-a-special-type-of-graph-maybe-too-special.">Bipartite Graphs are a special <code>type</code> of graph, maybe too special.</a></li>
+  <li><a href="#multipartite-graphs-and-the-sugiyama-layout-algorithm" id="toc-multipartite-graphs-and-the-sugiyama-layout-algorithm" class="nav-link" data-scroll-target="#multipartite-graphs-and-the-sugiyama-layout-algorithm">Multipartite graphs and the Sugiyama layout algorithm</a></li>
+  <li><a href="#finally-a-ggplot" id="toc-finally-a-ggplot" class="nav-link" data-scroll-target="#finally-a-ggplot">Finally, a ggplot</a></li>
+  <li><a href="#lets-rewind-the-instant-replay" id="toc-lets-rewind-the-instant-replay" class="nav-link" data-scroll-target="#lets-rewind-the-instant-replay">Let’s rewind the instant replay</a></li>
+  </ul></li>
+  <li><a href="#to-be-continued" id="toc-to-be-continued" class="nav-link" data-scroll-target="#to-be-continued">To be continued…</a></li>
+  <li><a href="#prologue-ggplot2-fails" id="toc-prologue-ggplot2-fails" class="nav-link" data-scroll-target="#prologue-ggplot2-fails">Prologue: ggplot2 Fails?</a>
+  <ul class="collapse">
+  <li><a href="#so-what-did-i-learn" id="toc-so-what-did-i-learn" class="nav-link" data-scroll-target="#so-what-did-i-learn">So, what did I learn?</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/omertzuk/omertzuk.github.io/edit/main/posts/xmap-ggraph-bipartite/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/omertzuk/omertzuk.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="bipartite-graphs-what-and-why" class="level2">
+<h2 class="anchored" data-anchor-id="bipartite-graphs-what-and-why">Bipartite Graphs? What and why?</h2>
+<p>I promise this post is about making ggplots, but first some background. I’ve been working on a new approach to validating data pipelines which involve recoding or redistributing values between categories. The core idea of approach is to validate <em>Mapping Objects</em> instead of, or in addition, to the data itself. For more details about the appraoch see <a href="https://ardc.edu.au/article/shaping-research-software-an-interview-with-cynthia-huang/">this interview</a> or the <a href="https://xmap-r-pkg.netlify.app">docs for the {xmap}</a> package (pronounced “crossmap”).</p>
+<p>Mapping objects can include named vectors or lists, as well as lookup tables and crosswalks – basically anything that encodes instructions of the form “category A connects to category B”. For instance, when using <code>forcats::fct_recode()</code>, you might store the <code>new = old</code> mappings as a named vector specifying which <code>old</code> level “connects” to which <code>new</code> level as below:</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_1e739eeec9f3ceb5db458d896a0138b3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"apple"</span>, <span class="st">"bear"</span>, <span class="st">"banana"</span>, <span class="st">"dear"</span>))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>fruit_levels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">fruit =</span> <span class="st">"apple"</span>, <span class="at">fruit =</span> <span class="st">"banana"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">fct_recode</span>(x, <span class="sc">!!!</span>fruit_levels)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] fruit bear  fruit dear 
+Levels: fruit bear dear</code></pre>
+</div>
+</div>
+<p>Now given a particular mapping object, you might want to verify that it has certain properties before using it. For example, when renaming columns with <code>dplyr::rename(...)</code>, where the <code>…</code> takes <code>new = old</code> pairs, you probably only want 1-to-1 relations. No 2 <code>old</code> columns should get the same <code>new</code> name, and a single <code>old</code> column being renamed into 2 <code>new</code> columns is just duplicating data.</p>
+<p>Of course this is a somewhat trivial example that you could quickly check by looking at the code, but as mappings get more complex and involve more categories, it becomes less obvious how to ensure you’re actually performing the intended transformations. Add a combination of recoding, aggregating and disaggregating numeric counts (e.g.&nbsp;occupation level statistics, or population by administrative area) to your data wrangling pipeline and you’re only one coding mistake away from accidentally (and often silently) dropping or corrupting some of your data (trust me, I’ve done it before).</p>
+<p>Now, where do graphs come in? Well, assertive programming is a good preventive measure against funny business in your data wrangling pipelines. However, it’s not always obvious what assertions you should be checking. In the case of recoding or redistributing data, it turns out that thinking of mapping objects as directed bipartite weighted graphs is quite informative for designing assertions.</p>
+<p>As a quick reminder, bipartite graphs are graphs where the nodes or vertices can be split into two disjoint sets, and edges or links are only allowed between the two sets, not within. The weighted part refers to the addition of a numeric attribute to each link. When the graph represents recoding or redistributing (i.e.&nbsp;collapsing or splitting) values, weights will be between 0 and 1. I call this graph-based representation a <em>Crossmap</em>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/image-1769111021.png" class="img-fluid figure-img"></p>
+<figcaption>A hand-drawn sketch of the Crossmap structure as a weighted directed bigraph.</figcaption>
+</figure>
+</div>
+<p>With this representation we can identify assertions like if we only want 1-to-1 relations, we should check that the <code>old</code> and <code>new</code> sets have the same number of unique elements:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/image-1921602619.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="483"></p>
+</figure>
+</div>
+<p>Notice that this condition doesn’t hold in the example above, since that is a many-to-one relation.</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_545ce7bdb5f8bf333ccae368de7954fa">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># old set has 2 unique elements</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(<span class="fu">unname</span>(fruit_levels))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "apple"  "banana"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># new set has only 1 unique element</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(<span class="fu">names</span>(fruit_levels))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "fruit"</code></pre>
+</div>
+</div>
+<p>You can take these assertions and check them using existing assertive programming tools like <a href="https://docs.ropensci.org/assertr/"><code>{assertr}</code></a> and <a href="https://cran.r-project.org/web/packages/validate/vignettes/cookbook.html"><code>{validate}</code></a> or even just using <a href="https://www.milesmcbain.com/posts/assertive-programming-for-pipelines/"><code>{testthat}</code></a>. Alternatively, the <code>{xmap}</code> (crossmap) package wraps these conditions into assertive functions that you can call before using a mapping object:</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-3_b355179428256899e59e08dbe0f7c25c">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(xmap)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>fruit_color <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">green =</span> <span class="st">"apple"</span>, <span class="at">yellow =</span> <span class="st">"banana"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  xmap<span class="sc">::</span><span class="fu">verify_named_all_1to1</span>()</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">fct_recode</span>(x, <span class="sc">!!!</span>fruit_color)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] green  bear   yellow dear  
+Levels: green yellow bear dear</code></pre>
+</div>
+</div>
+<p>Ok, so what else can we do with these graph representations? Well, wouldn’t it be nice if could easily summarise and visualise mapping objects? especially more complex ones?… and thus began my journey down the rabbit hole of graph data structures and ggplot2 extensions.</p>
+</section>
+<section id="show-me-the-plots" class="level2">
+<h2 class="anchored" data-anchor-id="show-me-the-plots">Show me the plots!</h2>
+<!--- insert final plot --->
+<p>I’ll spare you the lengthier rabbit hole detours for now (skip ahead for some failed experiments), but I’ve landed on using a combination of <code>{ggraph}</code>, <code>{tidygraph}</code> and <code>{igraph}</code> to power the <code>autoplot()</code> method I want to add to the <code>{xmap}</code> package. I’m still wrapping my head around <code>ggproto</code> and how to implement new Geoms and Stats, but here’s what I’ve learnt so far.</p>
+<p>Before we begin, a little context:</p>
+<ul>
+<li><a href="https://r.igraph.org/articles/igraph.html"><code>{igraph}</code></a> provides R bindings to the <a href="https://igraph.org/c/">core igraph</a> network analysis library written in C. It has its own class for graphs (<code>igraph</code>) and offers a lot of graph analysis and layout algorithms that are meant much more complex graphs than a humble bipartite representation of data recoding objects.</li>
+<li><a href="https://tidygraph.data-imaginist.com"><code>{tidygraph}</code></a> provides an tidy API for graph/network manipulation, including the <code>tbl_graph</code> class which is a thin wrapper around an <code>igraph</code> object.</li>
+<li><a href="https://ggraph.data-imaginist.com/index.html"><code>{ggraph}</code></a> is a <code>ggplot2</code> extension which lets you turn graphs (<code>tbl_graph</code>) into ggplots using layouts, nodes and edges.</li>
+</ul>
+<p>And a note on the types of mappings I’m trying to plot. I think the crossmap format is particularly useful when you are working with combinations of one-to-one, one-to-many, many-to-one and many-to-many relations, rather than just one type of relation. For example, if you’re just doing one-to-one recodings, a two-column look up table is a much more space and time efficient summary method.</p>
+<p>With that in mind, let’s see how far I got plotting the following simple crossmap that connects some nodes with <code>lower</code>case names with ones with <code>upper</code>case names with :</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-4_24f66f729e165301711a75493955ef6a">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>edges_abc <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>lower, <span class="sc">~</span>upper, <span class="sc">~</span>share,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"a"</span>, <span class="st">"AA"</span>, <span class="dv">1</span>,       <span class="co"># one-to-one</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"b"</span>, <span class="st">"BB"</span>, <span class="dv">1</span>,       <span class="co"># one-FROM-many / many-TO-one</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"c"</span>, <span class="st">"BB"</span>, <span class="dv">1</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"d"</span>, <span class="st">"CC"</span>, <span class="fl">0.3</span>,     <span class="co"># one-to-many</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"d"</span>, <span class="st">"DD"</span>, <span class="fl">0.6</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"d"</span>, <span class="st">"EE"</span>, <span class="fl">0.1</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="a-crossmap-is-a-bipartite-graph-isnt-it" class="level3">
+<h3 class="anchored" data-anchor-id="a-crossmap-is-a-bipartite-graph-isnt-it">A Crossmap is a Bipartite Graph, isn’t it?</h3>
+<div class="cell" data-hash="index_cache/html/setup_a4560fc790fb34f292fbf168cd232c24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggraph)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidygraph)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>To start with we need to convert our table of edges into a graph object. Luckily <code>{tidygraph}</code> handles this for us with ease:</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-5_757295b07be9fb52625601d3eb01847b">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(tg_abc <span class="ot">&lt;-</span> edges_abc <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tbl_graph</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tbl_graph: 9 nodes and 6 edges
+#
+# A rooted forest with 3 trees
+#
+# Node Data: 9 × 1 (active)
+  name 
+  &lt;chr&gt;
+1 a    
+2 b    
+3 c    
+4 d    
+5 AA   
+6 BB   
+# … with 3 more rows
+#
+# Edge Data: 6 × 3
+   from    to share
+  &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
+1     1     5     1
+2     2     6     1
+3     3     6     1
+# … with 3 more rows</code></pre>
+</div>
+</div>
+<p>From here we just need to generate a layout and add some <code>geom_edge_*</code>s and <code>geom_node_*</code>s.</p>
+<p>What’s a layout you ask? I had the same question. According to <a href="https://ggraph.data-imaginist.com/articles/Layouts.html"><code>vignette("Layouts", package = "ggraph")</code></a>:</p>
+<blockquote class="blockquote">
+<p>In very short terms, a layout is the vertical and horizontal placement of nodes when plotting a particular graph structure. Conversely, a layout algorithm is an algorithm that takes in a graph structure (and potentially some additional parameters) and return the vertical and horizontal position of the nodes.</p>
+</blockquote>
+<p>Ok, so we just need to pick a sensible layout algorithm, and lucky for me <code>ggraph</code> offers the option of using the <code>igraph::layout_as_bipartite()</code> algorithm. But wait a minute, apparently I haven’t supplied a bipartite graph? And what’s this <code>types</code> argument?</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-6_436d40aaf5d70189055c6f908dc407a4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>tg_abc <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">"igraph"</span>, <span class="at">algorithm =</span> <span class="st">"bipartite"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<pre class="bg-warning"><code>Error in handle_vertex_type_arg(types, graph): Not a bipartite graph, supply `types' argument or add a vertex attribute named `type'</code></pre>
+</div>
+</div>
+</section>
+<section id="bipartite-graphs-are-a-special-type-of-graph-maybe-too-special." class="level3">
+<h3 class="anchored" data-anchor-id="bipartite-graphs-are-a-special-type-of-graph-maybe-too-special.">Bipartite Graphs are a special <code>type</code> of graph, maybe too special.</h3>
+<p>It turns out that <code>igraph</code> only recognises graphs as bipartite if you add a logical <code>type</code> attribute to each of the vertices. It’s not clear to me if there’s an easy way to add this attribute once you’ve jumbled all your <code>to</code> and <code>from</code> nodes together into the <code>Node Data</code> component of a tidygraph <code>tbl_graph</code>.</p>
+<p>A somewhat cumbersome workaround is to coerce the edge list into a matrix first and then use the <code>as_tbl_graph.matrix()</code> method which handles the creation of the <code>type</code> attribute. Again lucky for me, I’ve been experimenting with this in the <code>xmap</code> package (because matrix representations also reveal useful assertions but I digress):</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-7_3c61aa11676afda1bc5f731199306149">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(xmap)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>(mtx_abc <span class="ot">&lt;-</span> edges_abc <span class="sc">|&gt;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_xmap_df</span>(<span class="at">from =</span> lower, <span class="at">to =</span> upper, <span class="at">weights =</span> share) <span class="sc">|&gt;</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xmap_to_matrix</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>4 x 5 sparse Matrix of class "dgCMatrix"
+     upper
+lower AA BB  CC  DD  EE
+    a  1  . .   .   .  
+    b  .  1 .   .   .  
+    c  .  1 .   .   .  
+    d  .  . 0.3 0.6 0.1</code></pre>
+</div>
+</div>
+<p>The function currently returns a sparse matrix by default, but we can easily switch that into a base <code>matrix</code> that <a href="https://tidygraph.data-imaginist.com/reference/tbl_graph.html"><code>as_tbl_graph()</code></a> can handle:</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-8_3a83436ec82e44f5b5c7d579cbb2fdea">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>(tgm_abc <span class="ot">&lt;-</span> mtx_abc <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>() <span class="sc">|&gt;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tbl_graph</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tbl_graph: 9 nodes and 6 edges
+#
+# A rooted forest with 3 trees
+#
+# Node Data: 9 × 2 (active)
+  type  name 
+  &lt;lgl&gt; &lt;chr&gt;
+1 FALSE a    
+2 FALSE b    
+3 FALSE c    
+4 FALSE d    
+5 TRUE  AA   
+6 TRUE  BB   
+# … with 3 more rows
+#
+# Edge Data: 6 × 3
+   from    to weight
+  &lt;int&gt; &lt;int&gt;  &lt;dbl&gt;
+1     1     5      1
+2     2     6      1
+3     3     6      1
+# … with 3 more rows</code></pre>
+</div>
+</div>
+<p>Notice that we now have a logical <code>type</code> attribute indicating the two disjoint <code>lower</code> and <code>upper</code> node sets. Let’s try again with the bipartite layout algorithm:</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-9_b1a39403e0e209bab970f4b103f84fce">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>tgm_abc <span class="sc">|&gt;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">"igraph"</span>, <span class="at">algorithm =</span> <span class="st">"bipartite"</span>) <span class="sc">+</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>() <span class="sc">+</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Success! We have something that loosely resembles my earlier hand-drawn sketch. So now we can move on to customisation using the familiar layered ggplot grammar and the extra features offered by <code>ggraph</code>’s <code>geom_edge_*</code> and <code>geom_node_*</code> families.</p>
+<p>But before that, maybe we don’t need to mess around with converting to matrices after all.</p>
+</section>
+<section id="multipartite-graphs-and-the-sugiyama-layout-algorithm" class="level3">
+<h3 class="anchored" data-anchor-id="multipartite-graphs-and-the-sugiyama-layout-algorithm">Multipartite graphs and the Sugiyama layout algorithm</h3>
+<p>As a general rule, I like things to be efficient and elegant, and the edgelist to matrix detour is neither. So, I started to dig around in the <code>igraph</code> and <code>tidygraph</code> documentation and code base to see if I could find a less clunky way of generating a bigraph layout.</p>
+<p>Now, you have to remember that I’m not a graph theorist, or network researcher so a lot of the documentation was basically gibberish to me. Then there’s the added layer of traversing between <code>ggraph</code> and <code>igraph</code> layout functions (via <code>tidygraph</code>?), and untangling the relationship between the <code>tbl_graph</code> and <code>igraph</code> classes.</p>
+<p>Nevertheless, I eventually stumbled across this little breadcrumb in the <code>igraph::layout.bipartite()</code> manual entry:</p>
+<blockquote class="blockquote">
+<p>The layout is created by first placing the vertices in two rows, according to their types. Then the positions within the rows are optimized to minimize edge crossings, using the Sugiyama algorithm (see <code>layout_with_sugiyama()</code>).</p>
+</blockquote>
+<p>At first glance, the <a href="https://r.igraph.org/reference/layout_with_sugiyama.html">examples in <code>igraph::layout_with_sugiyama()</code></a> don’t bear much resemblance to the bipartite graph I sketched earlier. Take this example:</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-10_d298b01fac74bda308026106884838d8">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph, <span class="at">quietly =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Another example, from the following paper:</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Markus Eiglsperger, Martin Siebenhaller, Michael Kaufmann:</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="do">## An Efficient Implementation of Sugiyama's Algorithm for</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Layered Graph Drawing, Journal of Graph Algorithms and</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Applications 9, 305--325 (2005).</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>ex <span class="ot">&lt;-</span> <span class="fu">graph_from_literal</span>(</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span> <span class="sc">-+</span> <span class="dv">29</span><span class="sc">:</span><span class="dv">6</span><span class="sc">:</span><span class="dv">5</span><span class="sc">:</span><span class="dv">20</span><span class="sc">:</span><span class="dv">4</span>,</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> <span class="sc">-+</span> <span class="dv">12</span>,</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span> <span class="sc">-+</span> <span class="dv">23</span><span class="sc">:</span><span class="dv">8</span>,</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  <span class="dv">3</span> <span class="sc">-+</span> <span class="dv">4</span>,</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  <span class="dv">4</span>,</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>  <span class="dv">5</span> <span class="sc">-+</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">10</span><span class="sc">:</span><span class="dv">14</span><span class="sc">:</span><span class="dv">26</span><span class="sc">:</span><span class="dv">4</span><span class="sc">:</span><span class="dv">3</span>,</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>  <span class="dv">6</span> <span class="sc">-+</span> <span class="dv">9</span><span class="sc">:</span><span class="dv">29</span><span class="sc">:</span><span class="dv">25</span><span class="sc">:</span><span class="dv">21</span><span class="sc">:</span><span class="dv">13</span>,</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>  <span class="dv">7</span>,</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>  <span class="dv">8</span> <span class="sc">-+</span> <span class="dv">20</span><span class="sc">:</span><span class="dv">16</span>,</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>  <span class="dv">9</span> <span class="sc">-+</span> <span class="dv">28</span><span class="sc">:</span><span class="dv">4</span>,</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>  <span class="dv">10</span> <span class="sc">-+</span> <span class="dv">27</span>,</span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>  <span class="dv">11</span> <span class="sc">-+</span> <span class="dv">9</span><span class="sc">:</span><span class="dv">16</span>,</span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>  <span class="dv">12</span> <span class="sc">-+</span> <span class="dv">9</span><span class="sc">:</span><span class="dv">19</span>,</span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>  <span class="dv">13</span> <span class="sc">-+</span> <span class="dv">20</span>,</span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>  <span class="dv">14</span> <span class="sc">-+</span> <span class="dv">10</span>,</span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>  <span class="dv">15</span> <span class="sc">-+</span> <span class="dv">16</span><span class="sc">:</span><span class="dv">27</span>,</span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>  <span class="dv">16</span> <span class="sc">-+</span> <span class="dv">27</span>,</span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>  <span class="dv">17</span> <span class="sc">-+</span> <span class="dv">3</span>,</span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>  <span class="dv">18</span> <span class="sc">-+</span> <span class="dv">13</span>,</span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>  <span class="dv">19</span> <span class="sc">-+</span> <span class="dv">9</span>,</span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>  <span class="dv">20</span> <span class="sc">-+</span> <span class="dv">4</span>,</span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>  <span class="dv">21</span> <span class="sc">-+</span> <span class="dv">22</span>,</span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>  <span class="dv">22</span> <span class="sc">-+</span> <span class="dv">8</span><span class="sc">:</span><span class="dv">9</span>,</span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>  <span class="dv">23</span> <span class="sc">-+</span> <span class="dv">9</span><span class="sc">:</span><span class="dv">24</span>,</span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>  <span class="dv">24</span> <span class="sc">-+</span> <span class="dv">12</span><span class="sc">:</span><span class="dv">15</span><span class="sc">:</span><span class="dv">28</span>,</span>
+<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a>  <span class="dv">25</span> <span class="sc">-+</span> <span class="dv">11</span>,</span>
+<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a>  <span class="dv">26</span> <span class="sc">-+</span> <span class="dv">18</span>,</span>
+<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a>  <span class="dv">27</span> <span class="sc">-+</span> <span class="dv">13</span><span class="sc">:</span><span class="dv">19</span>,</span>
+<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>  <span class="dv">28</span> <span class="sc">-+</span> <span class="dv">7</span>,</span>
+<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a>  <span class="dv">29</span> <span class="sc">-+</span> <span class="dv">25</span></span>
+<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a>layers <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a>  <span class="dv">0</span>, <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">17</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">14</span>, <span class="dv">26</span>, <span class="dv">3</span>), <span class="fu">c</span>(<span class="dv">23</span>, <span class="dv">10</span>, <span class="dv">18</span>), <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">24</span>),</span>
+<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a>  <span class="dv">12</span>, <span class="dv">6</span>, <span class="fu">c</span>(<span class="dv">29</span>, <span class="dv">21</span>), <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">22</span>), <span class="fu">c</span>(<span class="dv">11</span>, <span class="dv">8</span>, <span class="dv">15</span>), <span class="dv">16</span>, <span class="dv">27</span>, <span class="fu">c</span>(<span class="dv">13</span>, <span class="dv">19</span>),</span>
+<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">20</span>), <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">28</span>), <span class="dv">7</span></span>
+<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a>layex <span class="ot">&lt;-</span> <span class="fu">layout_with_sugiyama</span>(ex, <span class="at">layers =</span> <span class="fu">apply</span>(</span>
+<span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sapply</span>(</span>
+<span id="cb20-49"><a href="#cb20-49" aria-hidden="true" tabindex="-1"></a>    layers,</span>
+<span id="cb20-50"><a href="#cb20-50" aria-hidden="true" tabindex="-1"></a>    <span class="cf">function</span>(x) <span class="fu">V</span>(ex)<span class="sc">$</span>name <span class="sc">%in%</span> <span class="fu">as.character</span>(x)</span>
+<span id="cb20-51"><a href="#cb20-51" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb20-52"><a href="#cb20-52" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span>, which</span>
+<span id="cb20-53"><a href="#cb20-53" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb20-54"><a href="#cb20-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-55"><a href="#cb20-55" aria-hidden="true" tabindex="-1"></a>origvert <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="cn">TRUE</span>, <span class="fu">vcount</span>(ex)), <span class="fu">rep</span>(<span class="cn">FALSE</span>, <span class="fu">nrow</span>(layex<span class="sc">$</span>layout.dummy)))</span>
+<span id="cb20-56"><a href="#cb20-56" aria-hidden="true" tabindex="-1"></a>realedge <span class="ot">&lt;-</span> <span class="fu">as_edgelist</span>(layex<span class="sc">$</span>extd_graph)[, <span class="dv">2</span>] <span class="sc">&lt;=</span> <span class="fu">vcount</span>(ex)</span>
+<span id="cb20-57"><a href="#cb20-57" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(layex<span class="sc">$</span>extd_graph,</span>
+<span id="cb20-58"><a href="#cb20-58" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.label.cex =</span> <span class="fl">0.5</span>,</span>
+<span id="cb20-59"><a href="#cb20-59" aria-hidden="true" tabindex="-1"></a>  <span class="at">edge.arrow.size =</span> .<span class="dv">5</span>,</span>
+<span id="cb20-60"><a href="#cb20-60" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.size =</span> <span class="fu">ifelse</span>(origvert, <span class="dv">5</span>, <span class="dv">0</span>),</span>
+<span id="cb20-61"><a href="#cb20-61" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.shape =</span> <span class="fu">ifelse</span>(origvert, <span class="st">"square"</span>, <span class="st">"none"</span>),</span>
+<span id="cb20-62"><a href="#cb20-62" aria-hidden="true" tabindex="-1"></a>  <span class="at">vertex.label =</span> <span class="fu">ifelse</span>(origvert, <span class="fu">V</span>(ex)<span class="sc">$</span>name, <span class="st">""</span>),</span>
+<span id="cb20-63"><a href="#cb20-63" aria-hidden="true" tabindex="-1"></a>  <span class="at">edge.arrow.mode =</span> <span class="fu">ifelse</span>(realedge, <span class="dv">2</span>, <span class="dv">0</span>)</span>
+<span id="cb20-64"><a href="#cb20-64" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>But wait, let’s take a closer look at the documentation (emphasis mine):</p>
+<blockquote class="blockquote">
+<p>This layout algorithm is designed for <em>directed acyclic graphs</em> where each vertex is assigned to a layer. Layers are indexed from zero, and vertices of the same layer will be placed on the same horizontal line. The X coordinates of vertices within each layer are decided by the heuristic proposed by Sugiyama et al.&nbsp;to minimize edge crossings.</p>
+</blockquote>
+<p>the usage:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">layout_with_sugiyama</span>(</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  graph,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">layers =</span> <span class="cn">NULL</span>,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">hgap =</span> <span class="dv">1</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">vgap =</span> <span class="dv">1</span>,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">maxiter =</span> <span class="dv">100</span>,</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">weights =</span> <span class="cn">NULL</span>,</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">attributes =</span> <span class="fu">c</span>(<span class="st">"default"</span>, <span class="st">"all"</span>, <span class="st">"none"</span>)</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>and the <code>layers</code> argument:</p>
+<blockquote class="blockquote">
+<dl>
+<dt>layers</dt>
+<dd>
+<p>A numeric vector or NULL. If not NULL, then it should specify the layer index of the vertices. Layers are numbered from one. If NULL, then igraph calculates the layers automatically.</p>
+</dd>
+</dl>
+</blockquote>
+<p>Are you following? Not quite? Well, what if I told you that <em>directed bipartite graphs</em> are just a special kind of directed acyclic graph?</p>
+<p>Then, we’ve found a way to bypass the <code>type</code> requirement for using <code>layout_as_bipartite()</code>, which as far as I can tell probably just converts the logical <code>type</code> attribute into a numeric vector (i.e.&nbsp;0 or 1) assigning a “layer index” to the two types of nodes, and then calls <code>layout_with_sugiyama()</code>.</p>
+<p>Translating this back to <code>ggraph::create_layout()</code>/<code>ggraph()</code> syntax we can get around our earlier error without fiddling with matrices by letting <code>layout_with_sugiyama()</code> work out the disjoint <code>lower</code> and <code>upper</code> sets:</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-11_8f3ea6322d74b3752dccc1c9339562d1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>tg_abc <span class="sc">|&gt;</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">"igraph"</span>, <span class="at">algorithm =</span> <span class="st">"sugiyama"</span>) <span class="sc">+</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>() <span class="sc">+</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Another benefit of using the Sugiyama algorithm directly is that it lends itself nicely to plotting multi-step transformations as directed multipartite graphs. We would just need to calculate a “layer index” for each step and let the <a href="https://ggraph.data-imaginist.com/articles/tidygraph.html#nse-in-layout-specifications"><code>ggraph</code>/<code>tidygraph</code> handle the rest</a>. Instead of just two disjoint sets, we could have three or more classification schemes that we transform our data between. For example, we could extend my earlier hand draw example by adding an aggregation step:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/image-1203247235.png" class="img-fluid figure-img"></p>
+<figcaption>A hand-drawn multi-partite graph showing two sequential crossmap transformations</figcaption>
+</figure>
+</div>
+</section>
+<section id="finally-a-ggplot" class="level3">
+<h3 class="anchored" data-anchor-id="finally-a-ggplot">Finally, a ggplot</h3>
+<p>Now, for the grand reveal:</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-12_810f7fecb3f01208ccff083ec09b111c">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>tg_abc <span class="sc">|&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="do">## calculating edge properties</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">activate</span>(edges) <span class="sc">|&gt;</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">frac_weight =</span> <span class="fu">ifelse</span>(share <span class="sc">&lt;</span> <span class="dv">1</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">edge_linetype =</span> <span class="fu">ifelse</span>(frac_weight, <span class="st">"dashed"</span>, <span class="st">"solid"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">edge_label_pos =</span> <span class="fu">ifelse</span>(frac_weight, <span class="fl">0.8</span>, <span class="fl">0.2</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="do">## calculating node properties</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">activate</span>(nodes) <span class="sc">|&gt;</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n_from =</span> <span class="fu">centrality_degree</span>(<span class="at">mode =</span> <span class="st">"in"</span>),</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">in_from =</span> n_from <span class="sc">==</span> <span class="dv">0</span>,</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">collapse =</span> n_from <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  <span class="do">## now we plot...</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>  ggraph<span class="sc">::</span><span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">"sugiyama"</span>) <span class="sc">+</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>  <span class="do">## unit weight links,</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>  ggraph<span class="sc">::</span><span class="fu">geom_edge_diagonal</span>(</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">edge_linetype =</span> <span class="fu">I</span>(edge_linetype),</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">edge_alpha =</span> share,</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">filter =</span> <span class="sc">!</span>frac_weight),</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">end_cap =</span> <span class="fu">circle</span>(<span class="dv">6</span>, <span class="st">'mm'</span>),</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">show.legend =</span> <span class="cn">FALSE</span></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>  <span class="do">## frac weight links,</span></span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>  ggraph<span class="sc">::</span><span class="fu">geom_edge_diagonal</span>(</span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">edge_linetype =</span> <span class="fu">I</span>(edge_linetype),</span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>        <span class="at">edge_alpha =</span> share,</span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>        <span class="at">filter =</span> frac_weight,</span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>        <span class="at">label =</span> share,</span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>        <span class="at">label_pos =</span> edge_label_pos,</span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">end_cap =</span> <span class="fu">circle</span>(<span class="dv">6</span>, <span class="st">'mm'</span>),</span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">show.legend =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">angle_calc =</span> <span class="st">"along"</span>,</span>
+<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">label_dodge =</span> grid<span class="sc">::</span><span class="fu">unit</span>(<span class="dv">2</span>, <span class="st">"mm"</span>)</span>
+<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a>  <span class="do">## from nodes,</span></span>
+<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a>  ggraph<span class="sc">::</span><span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> name,</span>
+<span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a>                              <span class="at">filter=</span>in_from),</span>
+<span id="cb23-38"><a href="#cb23-38" aria-hidden="true" tabindex="-1"></a>                          ) <span class="sc">+</span></span>
+<span id="cb23-39"><a href="#cb23-39" aria-hidden="true" tabindex="-1"></a>  <span class="do">## to nodes,</span></span>
+<span id="cb23-40"><a href="#cb23-40" aria-hidden="true" tabindex="-1"></a>  ggraph<span class="sc">::</span><span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> name,</span>
+<span id="cb23-41"><a href="#cb23-41" aria-hidden="true" tabindex="-1"></a>                              <span class="at">fill =</span> collapse,</span>
+<span id="cb23-42"><a href="#cb23-42" aria-hidden="true" tabindex="-1"></a>                              <span class="at">filter=</span><span class="sc">!</span>in_from</span>
+<span id="cb23-43"><a href="#cb23-43" aria-hidden="true" tabindex="-1"></a>                              ),</span>
+<span id="cb23-44"><a href="#cb23-44" aria-hidden="true" tabindex="-1"></a>                          <span class="at">show.legend =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb23-45"><a href="#cb23-45" aria-hidden="true" tabindex="-1"></a>                          ) <span class="sc">+</span></span>
+<span id="cb23-46"><a href="#cb23-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>() <span class="sc">+</span></span>
+<span id="cb23-47"><a href="#cb23-47" aria-hidden="true" tabindex="-1"></a>  <span class="do">## and finally modify coordinates, scale and theme</span></span>
+<span id="cb23-48"><a href="#cb23-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb23-49"><a href="#cb23-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_reverse</span>() <span class="sc">+</span></span>
+<span id="cb23-50"><a href="#cb23-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb23-51"><a href="#cb23-51" aria-hidden="true" tabindex="-1"></a>  ggraph<span class="sc">::</span><span class="fu">th_no_axes</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="lets-rewind-the-instant-replay" class="level3">
+<h3 class="anchored" data-anchor-id="lets-rewind-the-instant-replay">Let’s rewind the instant replay</h3>
+<p>The first modification I made was to swap the basic <code>geom_node_point()</code> and <code>geom_edge_link()</code> for their fancier cousins <code>geom_node_label()</code> and <code>geom_edge_diagonal()</code>:</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-13_73842461b25b1902e6e6cc7aba712d7b">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>tg_abc <span class="sc">|&gt;</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">"sugiyama"</span>) <span class="sc">+</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> name)) <span class="sc">+</span> <span class="co"># was: geom_node_point()</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_diagonal</span>() <span class="co"># was: geom_edge_link()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Then I shuffled the layer order and tweaked the coordinates, scales and theme:</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-14_24f337421c5662015ad0933eaf82eeda">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>tg_abc <span class="sc">|&gt;</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">"sugiyama"</span>) <span class="sc">+</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_diagonal</span>() <span class="sc">+</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> name)) <span class="sc">+</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_reverse</span>() <span class="sc">+</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  ggraph<span class="sc">::</span><span class="fu">th_no_axes</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The final set of modifications required a bit of set up and rely heavily on the very useful but lightly documented <a href="https://github.com/thomasp85/ggraph/blob/1952710711cd27929b7dd1cd14d39f493a2fd88e/vignettes/Nodes.Rmd#L79-L81"><code>filter</code> aesthetic</a> offered in all <code>ggraph</code> geoms. If you unfold the code above in <a href="#finally-a-ggplot">Finally, a ggplot</a>, you’ll see that I calculated a bunch of variables to partition the edges (by having or not having <code>frac_weight</code>) and nodes (by being <code>in_from</code> or in the target set). I then mapped these variables to various aesthetics in standard ggplot style.</p>
+</section>
+</section>
+<section id="to-be-continued" class="level2">
+<h2 class="anchored" data-anchor-id="to-be-continued">To be continued…</h2>
+<p>That’s it for today. If you want more <code>ggplot2</code> stories keep reading, otherwise stay tuned for updates from the next phase of my journey to add <code>autoplot()</code> to the <code>xmap</code> package: <em>Geoms, Stats and autoplot, Oh My!</em></p>
+</section>
+<section id="prologue-ggplot2-fails" class="level2">
+<h2 class="anchored" data-anchor-id="prologue-ggplot2-fails">Prologue: ggplot2 Fails?</h2>
+<p>Obviously I’m not the first person to try and plot bipartite graphs, but navigating the wonderfully rich R and ggplot2 ecosystems to find what I needed proved much more difficult than I anticipated. Here are selections of my experiments using <code>geoms</code> from various ggplot2 extension packages:</p>
+<div class="quarto-layout-panel" data-layout="[[45,55], [1]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 45.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/cynthiahqy/viz-panel-maps/57272c61692ece2d2b94874d12fe7f0619c6e864/docs/plots/viz-country-concord/ggalluvial.png" class="img-fluid figure-img"></p>
+<figcaption>ggalluvial</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 55.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/cynthiahqy/viz-panel-maps/57272c61692ece2d2b94874d12fe7f0619c6e864/docs/plots/viz-country-concord/ggsankey.png" class="img-fluid figure-img"></p>
+<figcaption>ggsankey</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/cynthiahqy/viz-panel-maps/57272c61692ece2d2b94874d12fe7f0619c6e864/docs/plots/viz-country-concord/ggbump-sigmoid-graph-edges.jpg" class="img-fluid figure-img"></p>
+<figcaption>ggbump</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
+<p>Attempts at plotting bipartite graphs using <code>{ggalluvial}</code>, <code>{ggsankey}</code> and <code>{ggbump}</code>.</p>
+</div>
+</div>
+</div>
+<p>As you can see, my most successful Frankenstein was the <code>{ggbump}</code> graphic. Young, naive, and too intimidated to even think about reading the <a href="https://ggplot2.tidyverse.org/articles/extending-ggplot2.html">“Extending ggplot2” vignette</a>, I shoved a creative combination of <code>geom_text()</code>, <code>geom_label()</code>, <code>ggbump::geom_sigmoid()</code> and far too many ad-hoc computations in a <a href="https://github.com/cynthiahqy/viz-panel-maps/blob/57272c61692ece2d2b94874d12fe7f0619c6e864/R/plt_pm_df.R">wrapper function</a> and hoped for the best. Unfortunately, I soon ran into problems because as Thomas Lin Pedersen notes in the <a href="https://ggraph.data-imaginist.com/articles/Edges.html"><code>{ggraph}</code> package</a>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/thomasp85/ggraph/febab71076d7cf277cdb79b823f262b626651703/vignettes/edge_meme_wide.jpg" class="img-fluid figure-img"></p>
+<figcaption>One does not simply draw a line between two nodes</figcaption>
+</figure>
+</div>
+<p>I made some truly unsightly ggplots with my Frankenstein wrapper function including this monstrosity:</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-15_c469854debf53c6059fcbcca18785c77">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://user-images.githubusercontent.com/29718979/222634595-b7d8192f-a6be-4af7-ac6e-c4210a255175.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>After which, I did not stop and rethink my approach, but came up with this workaround:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/cynthiahqy/conformr-xmap-project/7dc4f4d9e1febda1999c415a1cbf0e31a4c85148/xmap/vignettes/plot-anzsco-isco-bigraph.png" class="img-fluid figure-img"></p>
+<figcaption>A crossmap for converting Australian occupation categories (ANZSCO22) to an international standard (ISCO8) visualised as a two-column bigraph with a lookup table underneath.</figcaption>
+</figure>
+</div>
+<p>On the surface, this workaround looks pretty good, but don’t even think about resizing it, and against all principles of reproducibility, the image above is actually a screenshot of a ggplot with two tables underneath it. I couldn’t work out how to get <code>patchwork</code> and <code>GridExtra</code> to hold onto my two tables with top alignment, and so I just placed a ggplot chunk on top of a <code>knitr::kable()</code> chunk and took a screenshot…</p>
+<section id="so-what-did-i-learn" class="level3">
+<h3 class="anchored" data-anchor-id="so-what-did-i-learn">So, what did I learn?</h3>
+<p>It turns out if you squint hard enough, almost anything can be a graph. This can be both useful and frustrating, but definitely lead me to a few realisations:</p>
+<ul>
+<li>a whole lot of ggplot2 extensions and network analysis packages offer slight variations on what I’m trying to do:
+<ul>
+<li><p><a href="https://github.com/davidsjoberg/ggsankey"><code>{ggsankey}</code></a>, <a href="https://github.com/corybrunson/ggalluvial"><code>{ggalluvial}</code></a> and <a href="https://github.com/heike/ggparallel"><code>{ggparallel}</code></a> all seem to expect a meaningful aesthetic mapping for the edge width (e.g.&nbsp;flow amount)</p></li>
+<li><p><a href="https://github.com/davidsjoberg/ggbump#tutorial"><code>{ggbump}</code></a> produces bump charts that look a lot like directed graphs, but there’s some mental gymnastics required to work out what the nodes, edges and attributes are. <code>ggbump::geom_sigmoid()</code> can probably be thought of as a more rigid variant of <code>ggraph::geom_edge_diagonal()</code></p></li>
+<li><p><a href="https://github.com/r-causal/ggdag"><code>{ggdag}</code></a>, <a href="https://pedroj.github.io/bipartite_plots/"><code>{ggbipart}</code></a>, <a href="https://briatte.github.io/ggnet/"><code>{ggnet2}</code></a> also offer plots that look a bit like what I’m after, but I couldn’t quite connect the dots between their network / DAG syntax and my use case.</p></li>
+<li><p><a href="https://github.com/mplex/multigraph"><code>{multigraph}</code></a> offers functions for plotting two-mode data, but doesn’t seem to use <code>ggplot2</code> making it difficult to customise the appearance of the plots.</p></li>
+</ul></li>
+<li>multipartite graphs seem to get the worst of both worlds:
+<ul>
+<li>they are too complicated to be neatly wrapped up into a simple ggplot2 pipeline and retain a sensible amount of flexibility (because they are graphs, and graphs are tricky).</li>
+<li>but they also need much more rigid and specific layout features and aesthetic mappings compared to network, hierarchical and matrix layouts.</li>
+</ul></li>
+<li>BUT many things are possible once we separate the creation and analysis of graphs (i.e.&nbsp;<a href="https://tidygraph.data-imaginist.com"><code>{tidygraph}</code></a>) from the visualisation (i.e <a href="https://ggraph.data-imaginist.com/"><code>{ggraph}</code></a>). Thanks Thomas Lin Pedersen!</li>
+</ul>
+<p>And on that note, thanks for reading! Please feel free to @me on <a href="http://twitter.com/cynthiahqy">Twitter</a>, <a href="https://fosstodon.org/@cynthiahqy">Mastodon</a>, or <a href="https://github.com/cynthiahqy/digital-garden">GitHub</a> with suggestions, corrections and/or ideas.</p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{tzuk2023,
+  author = {Tzuk, Omer},
+  title = {Visualising Data Recoding as {Bipartite} {Graphs} Using
+    Igraph, Tidygraph, Ggraph and Ggplot2},
+  date = {2023-05-04},
+  url = {https://omertzuk.github.io/posts/xmap-ggraph-bipartite/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-tzuk2023" class="csl-entry quarto-appendix-citeas" role="listitem">
+Tzuk, Omer. 2023. <span>“Visualising Data Recoding as Bipartite Graphs
+Using Igraph, Tidygraph, Ggraph and Ggplot2.”</span> May 4, 2023. <a href="https://omertzuk.github.io/posts/xmap-ggraph-bipartite/">https://omertzuk.github.io/posts/xmap-ggraph-bipartite/</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/omertzuk\.github\.io\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="light">
+<script>
+  function loadGiscus() {
+    // Function to get the theme based on body class
+    const getTheme = () => {
+      let baseTheme = document.getElementById('giscus-base-theme').value;
+      let altTheme = document.getElementById('giscus-alt-theme').value;
+      return document.body.classList.contains('quarto-dark') ? altTheme : baseTheme;
+    };
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.async = true;
+    script.dataset.repo = "cynthiahqy/digital-garden";
+    script.dataset.repoId = "R_kgDOHWPqTQ";
+    script.dataset.category = "Blog";
+    script.dataset.categoryId = "DIC_kwDOHWPqTc4CWS_Y";
+    script.dataset.mapping = "pathname";
+    script.dataset.reactionsEnabled = "1";
+    script.dataset.emitMetadata = "0";
+    script.dataset.inputPosition = "top";
+    script.dataset.theme = getTheme();
+    script.dataset.lang = "en";
+    script.crossOrigin = "anonymous";
+    // Append the script to the desired div instead of at the end of the body
+    document.getElementById("quarto-content").appendChild(script);
+  }
+  loadGiscus();
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/omertzuk/omertzuk.github.io/edit/main/posts/xmap-ggraph-bipartite/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/omertzuk/omertzuk.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This website is built with ❤️ and <a href="https://quarto.org/">Quarto</a>, by Omer Tzuk. License: <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
