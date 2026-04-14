@@ -1,43 +1,54 @@
 ---
-title: "Digital Garden"
+title: "Welcome to the Garden"
 subtitle: "A space for ideas in progress, experiments, and evolving thoughts"
-listing:
-  contents: 
-    - garden/*/*.qmd
-    - garden/*/*.ipynb
-    - "!garden/*/index.qmd"
-  sort: "date desc"
-  type: grid
-  grid-columns: 3
-  fields: [date, title, description, image, categories]
-  categories: true
-  sort-ui: [date, title]
-  filter-ui: [title, description, categories]
-  image-height: 200px
-page-layout: full
 ---
 
-## Welcome to the Garden 🌱
+## What is a Digital Garden?
 
-This is my digital garden — a space between formal publications and fleeting notes. Unlike a blog with polished posts, this garden grows organically with:
+A digital garden is a different way of sharing knowledge online. Unlike blogs with polished, chronological posts, gardens are:
 
-- **🌱 Seedlings**: Early ideas, quick experiments, things I'm exploring
-- **🌿 Growing**: Developing thoughts, work in progress, evolving frameworks  
-- **🌳 Evergreens**: Mature ideas that continue to be refined and expanded
+- **Evergreen** — notes are continuously updated and refined
+- **Non-linear** — ideas connect through links, not just time
+- **Work in progress** — imperfection is welcomed, growth is expected
+- **Exploratory** — a space for thinking in public
 
-Content here includes:
+## Growth Stages 🌱
 
-- Jupyter notebooks exploring data, models, or concepts
-- Notes on papers, books, and ideas
-- Visualizations and interactive demos
-- Technical experiments and code snippets
-- Reflections connecting across domains
+I use a simple tagging system to indicate the maturity of each note:
+
+- **Seedling** 🌱: Fresh ideas, rough notes, early explorations
+- **Growing** 🌿: Developing thoughts, partially formed
+- **Evergreen** 🌳: Mature, refined, but still evolving
+
+## What You'll Find Here
+
+This garden is organized into four main topics, each exploring different aspects of my research and thinking:
+
+- **[Information Theory](garden/information-theory/index.qmd)**: Entropy, coding, information geometry, predictive processing
+- **[Complex Systems](garden/complex-systems/index.qmd)**: Self-organization, networks, emergence, nonlinear dynamics
+- **[Consciousness](garden/consciousness/index.qmd)**: Neuroscience, meditation, altered states, theories of mind
+- **[Ecology](garden/ecology/index.qmd)**: Dryland systems, eco-hydrology, climate, vegetation patterns
+
+Each topic contains:
+
+- **Jupyter notebooks** exploring data, models, and simulations
+- **Notes** on papers, books, and concepts
+- **Experiments** with code, visualizations, and demos
+- **Connections** linking ideas across domains
+
+## Philosophy
 
 Nothing here is "finished" — these ideas grow, change, and branch over time. Come back often to see what's blooming.
 
+## Inspiration
+
+The digital garden movement draws from:
+
+- [Maggie Appleton's essay on garden history](https://maggieappleton.com/garden-history)
+- The concept of "learning in public"
+- The Zettelkasten note-taking method
+- Wiki culture and networked thought
+
 ---
 
-## Garden Contents
-
-::: {#listing}
-:::
+*Use the sidebar menu to explore different topics, or browse all entries within each topic page.*

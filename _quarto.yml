@@ -48,13 +48,12 @@ website:
     - id: garden
       title: "Digital Garden"
       contents:
-        - digital-garden.qmd
-        - section: "Topics"
-          contents:
-            - garden/information-theory/index.qmd
-            - garden/complex-systems/index.qmd
-            - garden/consciousness/index.qmd
-            - garden/ecology/index.qmd
+        - text: "Welcome"
+          href: digital-garden.qmd
+        - garden/information-theory/index.qmd
+        - garden/complex-systems/index.qmd
+        - garden/consciousness/index.qmd
+        - garden/ecology/index.qmd
 
   page-footer:
     right: "This website is built with ❤️  and [Quarto](https://quarto.org/), by Omer Tzuk. License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)."

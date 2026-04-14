@@ -21,7 +21,19 @@ garden/
 ```
 
 ## Topics
-`.qmd` file in the appropriate topic folder with frontmatter:
+
+The garden is organized into four main topics:
+
+- **Information Theory**: Entropy, coding, information geometry, predictive coding
+- **Complex Systems**: Self-organization, networks, emergence, nonlinear dynamics
+- **Consciousness**: Neuroscience, meditation, altered states, theories of mind
+- **Ecology**: Dryland systems, eco-hydrology, climate, vegetation patterns
+
+## Creating New Entries
+
+### Markdown/Quarto Entry
+
+Create a new `.qmd` file in the appropriate topic folder with frontmatter:
 
 ```yaml
 ---
@@ -39,18 +51,6 @@ Example: `garden/consciousness/predictive-processing-notes.qmd`
 Create a new `.ipynb` file in the appropriate topic folder. The first cell should be a markdown cell with frontmatter.
 
 Example: `garden/complex-systems/network-analysis.ipynb`
-```yaml
----
-title: "Your Entry Title"
-description: "A brief description"
-date: "YYYY-MM-DD"
-categories: [category1, growth-stage]
----
-```
-
-### Jupyter Notebook Entry
-
-Create a new folder and `index.ipynb` file. The first cell should be a markdown cell with frontmatter.
 
 ## Growth Stages
 
