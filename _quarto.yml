@@ -24,7 +24,8 @@ website:
       - research.qmd
       - text: Publications
         href: publications.qmd
-      - sidebar:garden
+      - text: Digital Garden
+        href: https://omertzuk.github.io/quarto-book/
       - text: CV
         href: CV.qmd
       - icon: github
@@ -45,16 +46,6 @@ website:
         - gallery.qmd
         - gallery/sketchbook/index.qmd
         - gallery/podcasts.qmd
-    
-    - id: garden
-      title: "Digital Garden"
-      contents:
-        - text: "Welcome"
-          href: digital-garden.qmd
-        - garden/information-theory/index.qmd
-        - garden/complex-systems/index.qmd
-        - garden/consciousness/index.qmd
-        - garden/ecology/index.qmd
 
   page-footer:
     right: "This website is built with ❤️  and [Quarto](https://quarto.org/), by Omer Tzuk. License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)."
